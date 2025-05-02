@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bup8m0e23s5cv"]
+
+[ext_resource type="Texture2D" uid="uid://dhk8weryi6mv2" path="res://project/textures/testing/Bricks090_1K-PNG_Color.png" id="1_math5"]
+[ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_s0i4r"]
+[ext_resource type="Texture2D" uid="uid://ol0r86wmpyl3" path="res://project/textures/testing/Bricks090_1K-PNG_NormalDX.png" id="2_tkm4q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_math5"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_tkm4q"]
+sky_material = SubResource("ProceduralSkyMaterial_math5")
+
+[sub_resource type="Environment" id="Environment_mwk7i"]
+background_mode = 2
+sky = SubResource("Sky_tkm4q")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwk7i"]
+albedo_texture = ExtResource("1_math5")
+normal_enabled = true
+normal_texture = ExtResource("2_tkm4q")
+uv1_scale = Vector3(3.925, 3.925, 3.925)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.946725, 0.874212, 0.812261, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mwk7i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0)
+material_override = SubResource("StandardMaterial3D_mwk7i")
+use_collision = true
+size = Vector3(40, 1, 40)
+
+[node name="Player" parent="." instance=ExtResource("1_s0i4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
