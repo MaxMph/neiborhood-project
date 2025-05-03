@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://cpispdpvrdqb2"]
+
+[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_u1tqk"]
+
+[resource]
+script = ExtResource("1_u1tqk")
+name = "Beans"
+value = 12
+weight = 0.5
+description = "rgesrgtsth"
+is_gun = false
+is_consumable = true
+metadata/_custom_type_script = "uid://b41e8d5l3in3p"

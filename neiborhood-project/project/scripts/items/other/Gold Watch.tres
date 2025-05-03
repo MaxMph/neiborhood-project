@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://dy4u583kj5x65"]
+
+[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_rg0cs"]
+
+[resource]
+script = ExtResource("1_rg0cs")
+name = "Gold Watch"
+value = 120
+weight = 0.1
+description = "awefaergserg"
+is_gun = false
+is_consumable = false
+metadata/_custom_type_script = "uid://b41e8d5l3in3p"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://8j7nkl1rvtar"]
+
+[ext_resource type="PackedScene" uid="uid://be2in43j4mdrp" path="res://project/scripts/storage.tscn" id="1_2f1ep"]
+[ext_resource type="Script" uid="uid://bh0aqi0yl8qv3" path="res://project/scripts/crate.gd" id="1_gwyh6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwyh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5tjo"]
+albedo_color = Color(0.303423, 0.197966, 0.0754691, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_edwcl"]
+
+[node name="item_sack" type="RigidBody3D" groups=["has_storage", "interactable"]]
+script = ExtResource("1_gwyh6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+shape = SubResource("BoxShape3D_gwyh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.479243, 0, 0, 0, 0.479243, 0, 0, 0, 0.479243, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_u5tjo")
+mesh = SubResource("BoxMesh_edwcl")
+
+[node name="storage" parent="." instance=ExtResource("1_2f1ep")]
+visible = false

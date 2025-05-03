@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="gun_res" load_steps=2 format=3 uid="uid://485lhdai74nr"]
+
+[ext_resource type="Script" uid="uid://chbmdp2sce6a5" path="res://project/scripts/items/guns/gun_res.gd" id="1_7gxk0"]
+
+[resource]
+script = ExtResource("1_7gxk0")
+dmg = 10
+firerate = 20
+mag_cap = 20
+name = "AK 47"
+value = 210
+weight = 2.5
+description = "argaregaerg"
+is_gun = true
+is_consumable = false
+metadata/_custom_type_script = "uid://chbmdp2sce6a5"

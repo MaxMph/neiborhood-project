@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://bh8m6706xsl3b"]
+
+[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_jva6h"]
+
+[resource]
+script = ExtResource("1_jva6h")
+name = "Coinpouch"
+value = 8
+weight = 0.25
+description = "aergsthersg"
+is_gun = false
+is_consumable = false
+metadata/_custom_type_script = "uid://b41e8d5l3in3p"

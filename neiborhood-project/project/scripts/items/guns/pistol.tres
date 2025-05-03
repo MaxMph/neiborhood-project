@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="gun_res" load_steps=2 format=3 uid="uid://bqmco1gbowm1e"]
+
+[ext_resource type="Script" uid="uid://chbmdp2sce6a5" path="res://project/scripts/items/guns/gun_res.gd" id="1_8ubyw"]
+
+[resource]
+script = ExtResource("1_8ubyw")
+dmg = 8
+firerate = 10
+mag_cap = 6
+name = "pistol"
+value = 60
+weight = 1.0
+description = ""
+is_gun = true
+is_consumable = false
+metadata/_custom_type_script = "uid://chbmdp2sce6a5"

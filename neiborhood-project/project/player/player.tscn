@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://drp58m2axqnp5"]
+[gd_scene load_steps=9 format=3 uid="uid://drp58m2axqnp5"]
 
 [ext_resource type="Script" uid="uid://bp4wcekqixb61" path="res://project/player/player.gd" id="1_h5qux"]
+[ext_resource type="Script" uid="uid://cwafluop4utjj" path="res://project/player/inventory.gd" id="2_b5guw"]
+[ext_resource type="Script" uid="uid://ceskl6f414vy4" path="res://project/player/interaction_ray.gd" id="2_opain"]
+[ext_resource type="Script" uid="uid://baj57egluslyx" path="res://project/HUD and UI/inventory_ui.gd" id="3_b5m3j"]
+[ext_resource type="Script" uid="uid://d34d1nsrnf31b" path="res://project/player/input_manager.gd" id="4_3rm1y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gj3lm"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="LabelSettings" id="LabelSettings_b5m3j"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_opain"]
+font_size = 24
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_h5qux")
 
 [node name="cam-holder" type="Node3D" parent="."]
@@ -14,5 +24,380 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="cam" type="Camera3D" parent="cam-holder/head"]
 
+[node name="gun_holder" type="Node3D" parent="cam-holder/head/cam"]
+
+[node name="interaction ray" type="RayCast3D" parent="cam-holder/head/cam"]
+target_position = Vector3(0, 0, -3)
+script = ExtResource("2_opain")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_gj3lm")
+
+[node name="inventory" type="Node" parent="."]
+script = ExtResource("2_b5guw")
+
+[node name="input manager" type="Node" parent="."]
+script = ExtResource("4_3rm1y")
+
+[node name="hud and UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="hud and UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="inventory" type="TabContainer" parent="hud and UI/Control" groups=["menu"]]
+visible = false
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+script = ExtResource("3_b5m3j")
+
+[node name="Weapons" type="TabBar" parent="hud and UI/Control/inventory"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ItemList" type="ItemList" parent="hud and UI/Control/inventory/Weapons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -206.5
+offset_right = -56.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+allow_search = false
+auto_height = true
+text_overrun_behavior = 4
+
+[node name="panelcontainer" type="PanelContainer" parent="hud and UI/Control/inventory/Weapons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -206.5
+offset_right = 378.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer"]
+layout_mode = 2
+
+[node name="stats" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats:"
+label_settings = SubResource("LabelSettings_b5m3j")
+
+[node name="dmg" type="HBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/dmg"]
+layout_mode = 2
+text = "Damage: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/dmg"]
+layout_mode = 2
+text = "0"
+
+[node name="firerate" type="HBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/firerate"]
+layout_mode = 2
+text = "Firerate: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/firerate"]
+layout_mode = 2
+text = "0"
+
+[node name="Ammo" type="HBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/Ammo"]
+layout_mode = 2
+text = "Magazine Capacity: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/Ammo"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="value" type="HBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "Value: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "0"
+
+[node name="weight" type="HBoxContainer" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "Weight: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="descrip" type="Label" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+
+[node name="description text" type="RichTextLabel" parent="hud and UI/Control/inventory/Weapons/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "afgshdfgf adfgsdrg argaerg rrr rrr asr a fa arfaerfaer asrfasrf asfaef asefa se "
+fit_content = true
+
+[node name="Consumables" type="TabBar" parent="hud and UI/Control/inventory"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ItemList" type="ItemList" parent="hud and UI/Control/inventory/Consumables"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -206.5
+offset_right = -56.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+allow_search = false
+auto_height = true
+text_overrun_behavior = 4
+
+[node name="panelcontainer" type="PanelContainer" parent="hud and UI/Control/inventory/Consumables"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -206.5
+offset_right = 378.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="hud and UI/Control/inventory/Consumables/panelcontainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Effects:"
+label_settings = SubResource("LabelSettings_opain")
+
+[node name="effect1" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Health + 10"
+
+[node name="effect2" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="effect3" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="value" type="HBoxContainer" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "Value: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "0"
+
+[node name="weight" type="HBoxContainer" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "Weight: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="descrip" type="Label" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+
+[node name="description text" type="RichTextLabel" parent="hud and UI/Control/inventory/Consumables/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "afgshdfgf adfgsdrg argaerg rrr rrr asr a fa arfaerfaer asrfasrf asfaef asefa se "
+fit_content = true
+
+[node name="Other" type="TabBar" parent="hud and UI/Control/inventory"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ItemList" type="ItemList" parent="hud and UI/Control/inventory/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -206.5
+offset_right = -56.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+allow_search = false
+auto_height = true
+text_overrun_behavior = 4
+
+[node name="panelcontainer" type="PanelContainer" parent="hud and UI/Control/inventory/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -206.5
+offset_right = 378.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="hud and UI/Control/inventory/Other/panelcontainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer"]
+layout_mode = 2
+
+[node name="value" type="HBoxContainer" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "Value: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "0"
+
+[node name="weight" type="HBoxContainer" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "Weight: "
+
+[node name="value" type="Label" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="descrip" type="Label" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+
+[node name="description text" type="RichTextLabel" parent="hud and UI/Control/inventory/Other/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "afgshdfgf adfgsdrg argaerg rrr rrr asr a fa arfaerfaer asrfasrf asfaef asefa se "
+fit_content = true
+
+[node name="crosshair" type="ColorRect" parent="hud and UI/Control"]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.996314)
+pivot_offset = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="hud and UI/Control/crosshair"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 23.0
+text = "F"
+horizontal_alignment = 1
+
+[connection signal="tab_changed" from="hud and UI/Control/inventory" to="hud and UI/Control/inventory" method="_on_tab_changed"]

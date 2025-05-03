@@ -1,0 +1,182 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2in43j4mdrp"]
+
+[ext_resource type="Script" uid="uid://djsg0xr3e83ks" path="res://project/scripts/storage.gd" id="1_3q88n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jshbm"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_444t3"]
+font_size = 24
+
+[node name="storage" type="Control" groups=["menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3q88n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/PanelContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+allow_search = false
+auto_height = true
+text_overrun_behavior = 4
+
+[node name="panelcontainer" type="PanelContainer" parent="VBoxContainer/PanelContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Effects:"
+label_settings = SubResource("LabelSettings_jshbm")
+
+[node name="effect1" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Health + 10"
+
+[node name="effect2" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="effect3" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="stats" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Stats:"
+label_settings = SubResource("LabelSettings_444t3")
+
+[node name="dmg" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/dmg"]
+layout_mode = 2
+text = "Damage: "
+
+[node name="value" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/dmg"]
+layout_mode = 2
+text = "0"
+
+[node name="firerate" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/firerate"]
+layout_mode = 2
+text = "Firerate: "
+
+[node name="value" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/firerate"]
+layout_mode = 2
+text = "0"
+
+[node name="Ammo" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/Ammo"]
+layout_mode = 2
+text = "Magazine Capacity: "
+
+[node name="value" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/Ammo"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="value" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "Value: "
+
+[node name="value" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/value"]
+layout_mode = 2
+text = "0"
+
+[node name="weight" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "Weight: "
+
+[node name="value" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/weight"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="descrip" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+
+[node name="description text" type="RichTextLabel" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "afgshdfgf adfgsdrg argaerg rrr rrr asr a fa arfaerfaer asrfasrf asfaef asefa se "
+fit_content = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="grab" type="Button" parent="VBoxContainer/PanelContainer2/buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Grab"
+
+[node name="grab all" type="Button" parent="VBoxContainer/PanelContainer2/buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Grab All"
+
+[connection signal="item_clicked" from="VBoxContainer/PanelContainer/HSplitContainer/ItemList" to="." method="_on_item_clicked"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer2/buttons/grab" to="." method="_on_grab_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer2/buttons/grab all" to="." method="_on_grab_all_pressed"]

@@ -1,8 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bup8m0e23s5cv"]
+[gd_scene load_steps=17 format=3 uid="uid://bup8m0e23s5cv"]
 
 [ext_resource type="Texture2D" uid="uid://dhk8weryi6mv2" path="res://project/textures/testing/Bricks090_1K-PNG_Color.png" id="1_math5"]
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_s0i4r"]
 [ext_resource type="Texture2D" uid="uid://ol0r86wmpyl3" path="res://project/textures/testing/Bricks090_1K-PNG_NormalDX.png" id="2_tkm4q"]
+[ext_resource type="PackedScene" uid="uid://dyndn3v4buvtt" path="res://project/crate.tscn" id="4_tkm4q"]
+[ext_resource type="Resource" uid="uid://bqmco1gbowm1e" path="res://project/scripts/items/guns/pistol.tres" id="5_k5apm"]
+[ext_resource type="PackedScene" uid="uid://8j7nkl1rvtar" path="res://project/item_sack.tscn" id="5_mwk7i"]
+[ext_resource type="Resource" uid="uid://budkmcubog6uv" path="res://project/scripts/items/other/toy car.tres" id="6_1agbc"]
+[ext_resource type="Resource" uid="uid://cvo4adeq85j1t" path="res://project/scripts/items/guns/bolt action.tres" id="6_01gqb"]
+[ext_resource type="Resource" uid="uid://cpispdpvrdqb2" path="res://project/scripts/items/consumables/beans.tres" id="7_168jr"]
+[ext_resource type="Resource" uid="uid://485lhdai74nr" path="res://project/scripts/items/guns/ak 47.tres" id="9_168jr"]
+[ext_resource type="Resource" uid="uid://dy4u583kj5x65" path="res://project/scripts/items/other/Gold Watch.tres" id="10_4egix"]
+[ext_resource type="Resource" uid="uid://bh8m6706xsl3b" path="res://project/scripts/items/other/Coins.tres" id="12_4egix"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_math5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -21,7 +30,7 @@ glow_enabled = true
 albedo_texture = ExtResource("1_math5")
 normal_enabled = true
 normal_texture = ExtResource("2_tkm4q")
-uv1_scale = Vector3(3.925, 3.925, 3.925)
+uv1_scale = Vector3(8, 8, 8)
 
 [node name="Main" type="Node3D"]
 
@@ -41,3 +50,11 @@ size = Vector3(40, 1, 40)
 
 [node name="Player" parent="." instance=ExtResource("1_s0i4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="crate" parent="." instance=ExtResource("4_tkm4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+items = Array[Resource]([ExtResource("5_k5apm"), ExtResource("6_01gqb"), ExtResource("7_168jr"), ExtResource("10_4egix"), ExtResource("9_168jr")])
+
+[node name="item_sack" parent="." instance=ExtResource("5_mwk7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)
+items = Array[Resource]([ExtResource("6_1agbc"), ExtResource("6_1agbc"), ExtResource("10_4egix"), ExtResource("12_4egix"), ExtResource("5_k5apm")])

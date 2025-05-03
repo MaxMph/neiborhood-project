@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="gun_res" load_steps=2 format=3 uid="uid://cvo4adeq85j1t"]
+
+[ext_resource type="Script" uid="uid://chbmdp2sce6a5" path="res://project/scripts/items/guns/gun_res.gd" id="1_wnhj8"]
+
+[resource]
+script = ExtResource("1_wnhj8")
+dmg = 24
+firerate = 1
+mag_cap = 1
+name = "Bolt Action"
+value = 140
+weight = 2.2
+description = "dcfgvbhnjkmojnhbugvyf"
+is_gun = true
+is_consumable = false
+metadata/_custom_type_script = "uid://chbmdp2sce6a5"

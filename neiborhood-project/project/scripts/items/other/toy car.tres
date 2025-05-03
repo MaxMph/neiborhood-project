@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://budkmcubog6uv"]
+
+[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_bnmob"]
+
+[resource]
+script = ExtResource("1_bnmob")
+name = "Toy Car"
+value = 4
+weight = 0.1
+description = "Tis is a small matchbox car. its light and holds little value both functionaly and monititaraly"
+is_gun = false
+is_consumable = false
+metadata/_custom_type_script = "uid://b41e8d5l3in3p"
