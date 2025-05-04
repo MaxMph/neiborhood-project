@@ -22,3 +22,4 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Inventory"):
 		$"../hud and UI/Control/inventory".interacted()
 		$"../inventory".send_items()
+	

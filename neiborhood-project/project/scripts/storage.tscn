@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://be2in43j4mdrp"]
+[gd_scene load_steps=5 format=3 uid="uid://be2in43j4mdrp"]
 
 [ext_resource type="Script" uid="uid://djsg0xr3e83ks" path="res://project/scripts/storage.gd" id="1_3q88n"]
+[ext_resource type="Script" uid="uid://dejf06e7kaqje" path="res://project/scripts/storage_stat.gd" id="2_jshbm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jshbm"]
 font_size = 24
@@ -45,6 +46,10 @@ allow_search = false
 auto_height = true
 text_overrun_behavior = 4
 
+[node name="Timer" type="Timer" parent="VBoxContainer/PanelContainer/HSplitContainer/ItemList"]
+wait_time = 0.2
+one_shot = true
+
 [node name="panelcontainer" type="PanelContainer" parent="VBoxContainer/PanelContainer/HSplitContainer"]
 layout_mode = 2
 
@@ -77,15 +82,18 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="stats" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="stats" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" groups=["gun_stat"]]
 visible = false
 layout_mode = 2
 text = "Stats:"
 label_settings = SubResource("LabelSettings_444t3")
 
-[node name="dmg" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="dmg" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("label", "value") groups=["gun_stat"]]
 visible = false
 layout_mode = 2
+script = ExtResource("2_jshbm")
+label = NodePath("Label")
+value = NodePath("value")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/dmg"]
 layout_mode = 2
@@ -95,9 +103,12 @@ text = "Damage: "
 layout_mode = 2
 text = "0"
 
-[node name="firerate" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="firerate" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("label", "value") groups=["gun_stat"]]
 visible = false
 layout_mode = 2
+script = ExtResource("2_jshbm")
+label = NodePath("Label")
+value = NodePath("value")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/firerate"]
 layout_mode = 2
@@ -107,9 +118,12 @@ text = "Firerate: "
 layout_mode = 2
 text = "0"
 
-[node name="Ammo" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="Ammo" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("label", "value") groups=["gun_stat"]]
 visible = false
 layout_mode = 2
+script = ExtResource("2_jshbm")
+label = NodePath("Label")
+value = NodePath("value")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/Ammo"]
 layout_mode = 2
@@ -123,8 +137,11 @@ text = "0"
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="value" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="value" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("label", "value")]
 layout_mode = 2
+script = ExtResource("2_jshbm")
+label = NodePath("Label")
+value = NodePath("value")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/value"]
 layout_mode = 2
@@ -134,8 +151,11 @@ text = "Value: "
 layout_mode = 2
 text = "0"
 
-[node name="weight" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer"]
+[node name="weight" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("label", "value")]
 layout_mode = 2
+script = ExtResource("2_jshbm")
+label = NodePath("Label")
+value = NodePath("value")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/panelcontainer/MarginContainer/VBoxContainer/weight"]
 layout_mode = 2

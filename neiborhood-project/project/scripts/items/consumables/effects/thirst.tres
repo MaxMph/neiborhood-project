@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="effects_res" load_steps=2 format=3 uid="uid://dlm0iy0h8084"]
+
+[ext_resource type="Script" uid="uid://6v3rbsg0vgap" path="res://project/scripts/items/consumables/effects/effects_res.gd" id="1_t3end"]
+
+[resource]
+script = ExtResource("1_t3end")
+subject = "thirst"
+mod = 4
+metadata/_custom_type_script = "uid://6v3rbsg0vgap"

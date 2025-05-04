@@ -4,6 +4,7 @@ extends Node
 var weight:int = 0
 var overloaded = false
 
+
 var items: Array = []
 
 func _add(item):

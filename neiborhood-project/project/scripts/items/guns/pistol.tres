@@ -4,12 +4,14 @@
 
 [resource]
 script = ExtResource("1_8ubyw")
+model = NodePath("cam-holder/head/cam/gun_holder/aim_holder/pistol")
 dmg = 8
 firerate = 10
 mag_cap = 6
+fov_mod = 10
 name = "pistol"
 value = 60
-weight = 1.0
+weight = 2.0
 description = ""
 is_gun = true
 is_consumable = false

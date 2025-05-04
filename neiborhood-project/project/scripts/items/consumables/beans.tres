@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://cpispdpvrdqb2"]
+[gd_resource type="Resource" script_class="consumable_res" load_steps=5 format=3 uid="uid://cpispdpvrdqb2"]
 
-[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_u1tqk"]
+[ext_resource type="Script" uid="uid://6v3rbsg0vgap" path="res://project/scripts/items/consumables/effects/effects_res.gd" id="1_p1l0y"]
+[ext_resource type="Resource" uid="uid://dlm0iy0h8084" path="res://project/scripts/items/consumables/effects/thirst.tres" id="2_t33rj"]
+[ext_resource type="Script" uid="uid://dc8lonjqrqvak" path="res://project/scripts/items/consumables/consumable_res.gd" id="3_de0hw"]
+
+[sub_resource type="Resource" id="Resource_voc2o"]
+script = ExtResource("1_p1l0y")
+subject = "hunger"
+mod = 10
+metadata/_custom_type_script = "uid://6v3rbsg0vgap"
 
 [resource]
-script = ExtResource("1_u1tqk")
+script = ExtResource("3_de0hw")
+effects = Array[Resource]([SubResource("Resource_voc2o"), ExtResource("2_t33rj")])
 name = "Beans"
 value = 12
 weight = 0.5
