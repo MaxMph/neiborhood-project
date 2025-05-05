@@ -7,6 +7,8 @@ class_name gun_res
 @export var firerate: int
 @export var mag_cap: int
 
+@export var semi_auto: bool
+
 @export var fov_mod:int
 
 @export_category("mods")

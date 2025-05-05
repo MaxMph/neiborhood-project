@@ -28,6 +28,10 @@ window/stretch/aspect="keep_height"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+hittable=""
+
 [input]
 
 left={

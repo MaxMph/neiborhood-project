@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=3 uid="uid://t5rn6217mqlp"]
+
+[ext_resource type="Script" uid="uid://c1mtwnuqx2mmy" path="res://project/objects/guns/weapon.gd" id="1_iq54v"]
+[ext_resource type="Texture2D" uid="uid://peyisemkxeot" path="res://project/textures/muzzle_flash.png" id="1_u2mc0"]
+[ext_resource type="Resource" uid="uid://485lhdai74nr" path="res://project/scripts/items/guns/ak 47.tres" id="2_ksl8v"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6cwux"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6cwux"]
+
+[sub_resource type="Animation" id="Animation_iq54v"]
+resource_name = "shoot"
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bullet_marker/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.08),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.02, 0.1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.86265e-09, 0.04, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bullet_marker/Sprite3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.08),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0.1, 0.1, 0.1), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_ksl8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bullet_marker/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bullet_marker/Sprite3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ksl8v"]
+_data = {
+&"RESET": SubResource("Animation_ksl8v"),
+&"shoot": SubResource("Animation_iq54v")
+}
+
+[node name="AK 47" type="Node3D"]
+script = ExtResource("1_iq54v")
+res = ExtResource("2_ksl8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0887927, 0, 0, 0, -3.08624e-08, 0.0887927, 0, -0.706048, -3.88125e-09, -0.000648884, 0.0314405, -0.451084)
+mesh = SubResource("CylinderMesh_6cwux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0786307, 0, 0, 0, 0.114402, 0.0393153, 0, -0.0660498, 0.0680962, -0.00102595, -0.0651685, 0.0394212)
+mesh = SubResource("CylinderMesh_6cwux")
+
+[node name="sdetgsth" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0887927, 0, 0, 0, -1.98069e-08, 0.125611, 0, -0.453127, -5.49061e-09, -0.000648884, 0.041265, -0.373775)
+mesh = SubResource("CylinderMesh_6cwux")
+
+[node name="sdetgsth2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0520295, 0, 0, 0, -5.42678e-09, 0.219206, 0, -0.12415, -9.58177e-09, -0.000648884, -0.0393215, -0.215081)
+mesh = SubResource("BoxMesh_6cwux")
+
+[node name="sdetgsth3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0520295, 0, 0, 0, 0.0445237, 0.275306, 0, -0.115891, 0.105768, -0.000648884, -0.253417, -0.262043)
+mesh = SubResource("BoxMesh_6cwux")
+
+[node name="sight_holder2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0967643, 0, 0, 0, 0.0389722, 0.163841, 0, -0.132033, 0.0483607, -0.000648884, -0.0349558, 0.371654)
+mesh = SubResource("CylinderMesh_6cwux")
+
+[node name="bullet_marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0590076, -1.17029)
+
+[node name="Sprite3D" type="Sprite3D" parent="bullet_marker"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.000760881, 0.000360195, -0.0544655)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_u2mc0")
+
+[node name="sights" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -1.49214e-13, 0.999998, 6.40284e-10, 0.107047, -0.0443319)
+
+[node name="iron" type="Node3D" parent="sights"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="sights/iron"]
+transform = Transform3D(0.0479481, 0, 0, 0, -1.42997e-10, 0.0479481, 0, -0.0032714, -2.09588e-09, -0.000648884, -0.0190758, 0.0261833)
+mesh = SubResource("CylinderMesh_6cwux")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="sights/iron"]
+transform = Transform3D(1.46128e-05, -0.0032714, -4.54756e-05, 8.27119e-06, -2.79773e-06, 0.0531525, -0.0182413, -2.62191e-06, 2.40654e-05, -0.000648884, -0.0190759, -0.260387)
+mesh = SubResource("CylinderMesh_6cwux")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ksl8v")
+}

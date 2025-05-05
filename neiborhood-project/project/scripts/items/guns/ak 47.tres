@@ -4,9 +4,12 @@
 
 [resource]
 script = ExtResource("1_7gxk0")
-dmg = 10
+model = NodePath("cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/AK 47")
+dmg = 24
 firerate = 20
 mag_cap = 20
+semi_auto = true
+fov_mod = 0
 name = "AK 47"
 value = 210
 weight = 10.0

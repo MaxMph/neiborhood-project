@@ -28,15 +28,16 @@ var sense = 0.003
 @onready var primary_slot = load("res://project/scripts/items/guns/pistol.tres")
 @onready var aim_marker = $"cam-holder/head/cam/gun_holder/aim_Marker"
 @onready var aim_holder = $"cam-holder/head/cam/gun_holder/aim_holder"
+@onready var firerate_timer = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/firerate_timer"
 var aimholder_basepos = Vector3(0.0, 0.124, -0.044)
 
 func _ready() -> void:
-	pass
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_node(str(primary_slot.model)).visible = true
+	firerate_timer.wait_time = primary_slot.firerate * 0.006
 
 func _physics_process(delta: float) -> void:
 	
-	print($"cam-holder/head/cam/gun_holder/aim_holder/pistol".position)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -50,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and Global.in_menu == false:
 		velocity = velocity.move_toward(Vector3(direction.x * (SPEED * speed_mult + speed_mod), velocity.y, direction.z * (SPEED * speed_mult + speed_mod)), acc * delta)
 	else:
 		velocity = velocity.move_toward(Vector3(0, velocity.y, 0), fric - fric_mod)
@@ -60,22 +61,28 @@ func _physics_process(delta: float) -> void:
 		speed_mult = 1.5
 		fov_mod = move_toward(fov_mod, sprint_speed, 10 * delta)
 	else:
-		speed_mult = move_toward(speed_mult, 1.0, 0.1 * delta)
-		speed_mult = 1.0
+		speed_mult = move_toward(speed_mult, 1.0, 10 * delta)
+		#speed_mult = 1.0
 		fov_mod = move_toward(fov_mod, 1.0, 10 * delta)
 	
-	if Input.is_action_pressed("aim"):
-		#aim_holder.position = aim_holder.position.move_toward(aim_marker.position, 4 * delta)
-		aim_holder.position = aim_marker.position
+	if Input.is_action_pressed("aim") and Global.in_menu == false:
+		aim_holder.position = aim_holder.position.move_toward(aim_marker.position, 4 * delta)
 		fov = move_toward(fov, base_fov - primary_slot.fov_mod, 80 * delta)
 	elif aim_holder.position != aimholder_basepos:
 		aim_holder.position = aim_holder.position.move_toward(aimholder_basepos, 4 * delta)
 		fov = move_toward(fov, base_fov, 80 * delta)
 		#aim_holder.position = move_toward(aim_holder.position, aimholder_basepos, 10 * delta)
 	
-	if Input.is_action_just_pressed("shoot"):
-		#print(primary_slot.model)
-		get_node(str(primary_slot.model)).shoot()
+	if Input.is_action_just_pressed("shoot") and primary_slot.semi_auto == false and Global.in_menu == false:
+		if firerate_timer.is_stopped() == true:
+			get_node(str(primary_slot.model)).shoot()
+			#firerate_timer.start()
+			
+
+	if Input.is_action_pressed("shoot") and primary_slot.semi_auto == true and Global.in_menu == false:
+		if firerate_timer.is_stopped() == true:
+			get_node(str(primary_slot.model)).shoot()
+			firerate_timer.start()
 	
 	cam.fov = fov + fov_mod
 	move_and_slide()

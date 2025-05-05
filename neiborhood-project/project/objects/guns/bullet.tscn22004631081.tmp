@@ -3,17 +3,18 @@
 [ext_resource type="Script" uid="uid://c8gx0pobfn8vx" path="res://project/objects/guns/bullet.gd" id="1_xp2xx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp2xx"]
-albedo_color = Color(0.838276, 0.456312, 5.77569e-07, 1)
-emission_enabled = true
-emission = Color(1, 0.587479, 0.434936, 1)
-emission_energy_multiplier = 2.78
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1q8y6"]
 
 [node name="bullet" type="CharacterBody3D"]
 script = ExtResource("1_xp2xx")
+drag = 0.1
+drop = 0.1
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0365975, 0, 0, 0, -2.63206e-08, 0.0365975, 0, -0.602148, -1.59972e-09, 0, 0, 0)
+transform = Transform3D(0.0261411, 0, 0, 0, -1.14266e-09, 0.0261411, 0, -0.0261411, -1.14266e-09, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_xp2xx")
 mesh = SubResource("CylinderMesh_1q8y6")
+
+[node name="RayCast3D" type="RayCast3D" parent="MeshInstance3D3"]

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_8ubyw")
-model = NodePath("cam-holder/head/cam/gun_holder/aim_holder/pistol")
+model = NodePath("cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/pistol")
 dmg = 8
 firerate = 10
 mag_cap = 6
