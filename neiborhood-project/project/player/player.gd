@@ -19,6 +19,13 @@ var fov_mod = 0
 
 var sense = 0.003
 
+#stats
+var max_health = 100
+var health = 100
+@onready var stamina_bar = $"hud and UI/Control/hud/staminabar"
+
+var shots_fired = 0
+
 #noderef
 @onready var head: Node3D = $"cam-holder/head"
 @onready var cam = $"cam-holder/head/cam"
@@ -56,14 +63,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector3(0, velocity.y, 0), fric - fric_mod)
 	
-	
-	if Input.is_action_pressed("sprint"):
+	#print(stamina_bar.value)
+	#not working
+	if Input.is_action_pressed("sprint") and stamina_bar.value > 0:
+		stamina_bar.value -= 28 * delta
 		speed_mult = 1.5
 		fov_mod = move_toward(fov_mod, sprint_speed, 10 * delta)
 	else:
 		speed_mult = move_toward(speed_mult, 1.0, 10 * delta)
 		#speed_mult = 1.0
 		fov_mod = move_toward(fov_mod, 1.0, 10 * delta)
+		if stamina_bar.value < stamina_bar.max_value:
+			stamina_bar.value += 10 * delta
 	
 	if Input.is_action_pressed("aim") and Global.in_menu == false:
 		aim_holder.position = aim_holder.position.move_toward(aim_marker.position, 4 * delta)
@@ -74,16 +85,17 @@ func _physics_process(delta: float) -> void:
 		#aim_holder.position = move_toward(aim_holder.position, aimholder_basepos, 10 * delta)
 	
 	if Input.is_action_just_pressed("shoot") and primary_slot.semi_auto == false and Global.in_menu == false:
-		if firerate_timer.is_stopped() == true:
-			get_node(str(primary_slot.model)).shoot()
-			#firerate_timer.start()
-			
+		shoot()
 
 	if Input.is_action_pressed("shoot") and primary_slot.semi_auto == true and Global.in_menu == false:
-		if firerate_timer.is_stopped() == true:
-			get_node(str(primary_slot.model)).shoot()
-			firerate_timer.start()
+		shoot()
 	
+	if Input.is_action_just_pressed("reload") and $"reload timer".is_stopped() == true:
+		$"reload timer".start()
+		await $"reload timer".timeout
+		shots_fired = 0
+		print("reloaded")
+
 	cam.fov = fov + fov_mod
 	move_and_slide()
 
@@ -93,3 +105,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			head.rotate_y(-event.relative.x * sense)
 			cam.rotate_x(-event.relative.y * sense)
 			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+
+func shoot():
+	if shots_fired < primary_slot.mag_cap:
+		if firerate_timer.is_stopped() == true:
+			get_node(str(primary_slot.model)).shoot()
+			firerate_timer.start()
+			shots_fired += 1
+
+func hit(dmg):
+	health -= dmg
+	$"hud and UI/Control/hud/healthbar".value = health
+	if health <= 0:
+		queue_free()
+
+func gun_set():
+	pass

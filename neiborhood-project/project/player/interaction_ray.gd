@@ -8,14 +8,12 @@ var interacting = false
 	#connect("interact_pressed", interact())
 
 func _process(delta: float) -> void:
-	if is_colliding():
-		if get_collider().is_in_group("interactable"):
-			can_interact = true
-			show_crosshair()
-		else:
-			hide_crosshair()
+	if is_colliding() and get_collider().is_in_group("interactable"):
+		can_interact = true
+		show_crosshair()
 	else:
 		hide_crosshair()
+
 func interact():
 	if can_interact and is_colliding():
 		get_collider().interacted()
