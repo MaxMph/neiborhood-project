@@ -22,6 +22,8 @@ func build_collection(items):
 			$Weapons/ItemList.add_item(i.name)
 		elif i.is_consumable:
 			$Consumables/ItemList.add_item(i.name)
+		elif i.is_ammo:
+			$Ammo/ItemList.add_item(i.name)
 		else:
 			$Other/ItemList.add_item(i.name)
 		

@@ -96,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		shots_fired = 0
 		print("reloaded")
 
+
+	$"hud and UI/Control/hud/ammo label".text = str(primary_slot.mag_cap - shots_fired) + "/" + str(primary_slot.mag_cap)
 	cam.fov = fov + fov_mod
 	move_and_slide()
 
@@ -114,6 +116,7 @@ func shoot():
 			shots_fired += 1
 
 func hit(dmg):
+	print("works")
 	health -= dmg
 	$"hud and UI/Control/hud/healthbar".value = health
 	if health <= 0:

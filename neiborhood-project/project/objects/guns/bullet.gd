@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	if ray.is_colliding():
 		if ray.get_collider().is_in_group("hittable"):
 			ray.get_collider().hit(dmg)
-		print("WHOOOOOOOOOOOO")
+		#print("WHOOOOOOOOOOOO")
 		ray.queue_free()
 		#ray.get_collision_normal()
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bup8m0e23s5cv"]
+[gd_scene load_steps=17 format=3 uid="uid://bup8m0e23s5cv"]
 
 [ext_resource type="Material" uid="uid://dpu0imkljexop" path="res://project/textures/testing/brick.tres" id="1_01gqb"]
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_s0i4r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://budkmcubog6uv" path="res://project/scripts/items/other/toy car.tres" id="6_1agbc"]
 [ext_resource type="Resource" uid="uid://cvo4adeq85j1t" path="res://project/scripts/items/guns/bolt action.tres" id="6_01gqb"]
 [ext_resource type="Resource" uid="uid://cpispdpvrdqb2" path="res://project/scripts/items/consumables/beans.tres" id="7_168jr"]
+[ext_resource type="Resource" uid="uid://ce06la37xpo0x" path="res://project/scripts/items/ammo and acsessories/45 ACP.tres" id="9_4egix"]
 [ext_resource type="Resource" uid="uid://485lhdai74nr" path="res://project/scripts/items/guns/ak 47.tres" id="9_168jr"]
 [ext_resource type="Resource" uid="uid://dy4u583kj5x65" path="res://project/scripts/items/other/Gold Watch.tres" id="10_4egix"]
 [ext_resource type="Resource" uid="uid://bh8m6706xsl3b" path="res://project/scripts/items/other/Coins.tres" id="12_4egix"]
@@ -48,6 +49,12 @@ material_override = ExtResource("1_01gqb")
 use_collision = true
 size = Vector3(1, 7, 40)
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.001, -2.5)
+material_override = ExtResource("1_01gqb")
+use_collision = true
+size = Vector3(1, 7, 15)
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 6.501, -18.5)
 material_override = ExtResource("1_01gqb")
@@ -65,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="crate" parent="." instance=ExtResource("4_tkm4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-items = Array[Resource]([ExtResource("5_k5apm"), ExtResource("6_01gqb"), ExtResource("7_168jr"), ExtResource("10_4egix"), ExtResource("9_168jr")])
+items = Array[Resource]([ExtResource("5_k5apm"), ExtResource("6_01gqb"), ExtResource("7_168jr"), ExtResource("10_4egix"), ExtResource("9_168jr"), ExtResource("9_4egix"), ExtResource("9_4egix")])
 
 [node name="item_sack" parent="." instance=ExtResource("5_mwk7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)

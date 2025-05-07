@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://ce06la37xpo0x"]
+
+[ext_resource type="Script" uid="uid://b41e8d5l3in3p" path="res://project/scripts/items/item_res.gd" id="1_ydfoh"]
+
+[resource]
+script = ExtResource("1_ydfoh")
+name = ".45 APC"
+value = 2
+weight = 0.1
+description = ""
+is_gun = false
+is_ammo = true
+is_consumable = false
+metadata/_custom_type_script = "uid://b41e8d5l3in3p"

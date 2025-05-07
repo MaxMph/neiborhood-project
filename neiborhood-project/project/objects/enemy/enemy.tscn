@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://08bpxcv40kes"]
+[gd_scene load_steps=11 format=3 uid="uid://08bpxcv40kes"]
 
 [ext_resource type="Script" uid="uid://b3pqivxdvkx8c" path="res://project/objects/enemy/enemy.gd" id="1_jdor0"]
+[ext_resource type="Resource" uid="uid://bqmco1gbowm1e" path="res://project/scripts/items/guns/pistol.tres" id="2_s54d6"]
+[ext_resource type="PackedScene" uid="uid://dfia2530i1e3a" path="res://project/objects/guns/pistol.tscn" id="2_wvs5m"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fjbnw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdor0"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_jdor0"]
+radius = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvs5m"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s54d6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdor0"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wvs5m"]
+
 [node name="enemy" type="CharacterBody3D" groups=["hittable"]]
 script = ExtResource("1_jdor0")
+gun = ExtResource("2_s54d6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_fjbnw")
@@ -15,6 +31,34 @@ mesh = SubResource("CapsuleMesh_fjbnw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jdor0")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.507052)
-target_position = Vector3(0, 0, -1)
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jdor0")
+
+[node name="goal_rot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wvs5m")
+mesh = SubResource("SphereMesh_s54d6")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="head_face" type="MeshInstance3D" parent="head"]
+transform = Transform3D(0.8, 0, 0, 0, -6.99382e-09, -0.8, 0, 0.16, -3.49691e-08, 0, 0, -0.394344)
+material_override = SubResource("StandardMaterial3D_jdor0")
+mesh = SubResource("CylinderMesh_wvs5m")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.594488)
+target_position = Vector3(0, 0, -30)
+
+[node name="pistol" parent="head" instance=ExtResource("2_wvs5m")]
+
+[node name="firerate_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
