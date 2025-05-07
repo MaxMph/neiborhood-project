@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://imwfu07pqcvd"]
+
+[ext_resource type="Script" uid="uid://ckto2ku6b4e6r" path="res://project/scripts/state machine stuff/enemy/state_controller.gd" id="1_u77e0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ram6i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thgkh"]
+albedo_color = Color(0.811627, 0.606988, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gybvd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8grxh"]
+
+[node name="enemy2" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ram6i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_thgkh")
+mesh = SubResource("CapsuleMesh_gybvd")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.85298, 0, 0, 0, -6.514e-09, 0.85298, 0, -0.149023, -3.7285e-08, 0, 0, -0.400765)
+mesh = SubResource("CylinderMesh_8grxh")
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D"]
+target_position = Vector3(0, 0, -10)
+
+[node name="state_controller" type="Node" parent="."]
+script = ExtResource("1_u77e0")

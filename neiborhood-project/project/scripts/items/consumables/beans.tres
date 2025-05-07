@@ -18,5 +18,6 @@ value = 12
 weight = 0.5
 description = "rgesrgtsth"
 is_gun = false
+is_ammo = false
 is_consumable = true
 metadata/_custom_type_script = "uid://b41e8d5l3in3p"
