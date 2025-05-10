@@ -1,0 +1,30 @@
+
+:root {
+ --codegreen: rgb(0, 255, 0)
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+  background-color: black;
+}
+
+h1 {
+  color: var(--codegreen);
+}
+
+p {
+  color: var(--codegreen);
+}
+
+hr {
+  border-color: var(--codegreen);
+  color: blueviolet;
+}
+
+button {
+  color: var(--codegreen);
+}
