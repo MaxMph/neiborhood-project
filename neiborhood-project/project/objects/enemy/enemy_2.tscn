@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://imwfu07pqcvd"]
-
-[ext_resource type="Script" uid="uid://ckto2ku6b4e6r" path="res://project/scripts/state machine stuff/enemy/state_controller.gd" id="1_u77e0"]
+[gd_scene load_steps=5 format=3 uid="uid://imwfu07pqcvd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ram6i"]
 
@@ -31,4 +29,3 @@ mesh = SubResource("CylinderMesh_8grxh")
 target_position = Vector3(0, 0, -10)
 
 [node name="state_controller" type="Node" parent="."]
-script = ExtResource("1_u77e0")

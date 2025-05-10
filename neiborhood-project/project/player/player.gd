@@ -32,7 +32,7 @@ var shots_fired = 0
 
 @onready var inventory = $inventory
 
-@onready var primary_slot = load("res://project/scripts/items/guns/pistol.tres")
+@onready var primary_slot = load("res://project/scripts/items/guns/ak 47.tres")
 @onready var aim_marker = $"cam-holder/head/cam/gun_holder/aim_Marker"
 @onready var aim_holder = $"cam-holder/head/cam/gun_holder/aim_holder"
 @onready var firerate_timer = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/firerate_timer"
@@ -40,8 +40,7 @@ var aimholder_basepos = Vector3(0.0, 0.124, -0.044)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_node(str(primary_slot.model)).visible = true
-	firerate_timer.wait_time = primary_slot.firerate * 0.006
+	gun_set()
 
 func _physics_process(delta: float) -> void:
 	
@@ -96,6 +95,8 @@ func _physics_process(delta: float) -> void:
 		shots_fired = 0
 		print("reloaded")
 
+	if Input.is_action_just_pressed("swap gun"):
+		gun_set()
 
 	$"hud and UI/Control/hud/ammo label".text = str(primary_slot.mag_cap - shots_fired) + "/" + str(primary_slot.mag_cap)
 	cam.fov = fov + fov_mod
@@ -123,4 +124,13 @@ func hit(dmg):
 		queue_free()
 
 func gun_set():
-	pass
+	if primary_slot == $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/pistol".res:
+		primary_slot = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/AK 47".res
+	else:
+		primary_slot = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/pistol".res
+	for i in $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder".get_children():
+		if i != firerate_timer:
+			i.visible = false
+	get_node(str(primary_slot.model)).visible = true
+	firerate_timer.wait_time = primary_slot.firerate * 0.006
+	shots_fired = 0

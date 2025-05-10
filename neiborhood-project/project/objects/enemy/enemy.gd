@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var health = 80
+var health = 60
 @export var gun: gun_res
 @onready var _gun = $head/pistol
 var shots_fired = 0
@@ -37,6 +37,7 @@ func hit(dmg):
 	health -= dmg
 	if health <= 0:
 		queue_free()
+	$hit.play()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -48,7 +49,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 
 func look_for(delta):
-	look_speed = target_pos.distance_to(opp_super_last) * 4
+	look_speed = target_pos.distance_to(opp_super_last) * 3
 	target_pos = target_pos.move_toward(opp_super_last, (3 + look_speed) * delta)
 	$head.look_at(target_pos)
 	opp_super_last = opp_last

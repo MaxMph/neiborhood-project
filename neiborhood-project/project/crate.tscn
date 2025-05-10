@@ -10,7 +10,7 @@ albedo_color = Color(0.253918, 0.246592, 0.235404, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1lj7n"]
 
-[node name="crate" type="RigidBody3D" groups=["has_storage", "interactable"]]
+[node name="crate" type="RigidBody3D" groups=["has_storage"]]
 script = ExtResource("1_xwk48")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

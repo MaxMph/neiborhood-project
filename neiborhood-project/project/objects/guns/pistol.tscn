@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfia2530i1e3a"]
+[gd_scene load_steps=9 format=3 uid="uid://dfia2530i1e3a"]
 
 [ext_resource type="Script" uid="uid://c1mtwnuqx2mmy" path="res://project/objects/guns/weapon.gd" id="1_2x8xn"]
 [ext_resource type="Resource" uid="uid://bqmco1gbowm1e" path="res://project/scripts/items/guns/pistol.tres" id="2_51e34"]
 [ext_resource type="Texture2D" uid="uid://peyisemkxeot" path="res://project/textures/muzzle_flash.png" id="3_y22fg"]
+[ext_resource type="AudioStream" uid="uid://dss2kft0dq0fc" path="res://project/audio/gunshot_3.wav" id="4_45vkv"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fmkhx"]
 
@@ -183,3 +184,6 @@ texture = ExtResource("3_y22fg")
 libraries = {
 &"": SubResource("AnimationLibrary_51e34")
 }
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_45vkv")

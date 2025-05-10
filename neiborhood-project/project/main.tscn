@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bup8m0e23s5cv"]
+[gd_scene load_steps=18 format=3 uid="uid://bup8m0e23s5cv"]
 
 [ext_resource type="Material" uid="uid://dpu0imkljexop" path="res://project/textures/testing/brick.tres" id="1_01gqb"]
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_s0i4r"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dy4u583kj5x65" path="res://project/scripts/items/other/Gold Watch.tres" id="10_4egix"]
 [ext_resource type="Resource" uid="uid://bh8m6706xsl3b" path="res://project/scripts/items/other/Coins.tres" id="12_4egix"]
 [ext_resource type="PackedScene" uid="uid://08bpxcv40kes" path="res://project/objects/enemy/enemy.tscn" id="12_168jr"]
+[ext_resource type="PackedScene" uid="uid://dobumgbf50lin" path="res://project/dialouge/test_npc.tscn" id="14_rxl5i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_math5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -86,3 +87,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -8)
 
 [node name="enemy3" parent="." instance=ExtResource("12_168jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -6)
+
+[node name="test npc" parent="." instance=ExtResource("14_rxl5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 5)

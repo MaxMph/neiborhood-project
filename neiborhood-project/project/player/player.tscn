@@ -43,10 +43,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12371, -0.0436985)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119, 0.085)
 
 [node name="pistol" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("2_at3b1")]
-visible = false
 
 [node name="AK 47" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("3_yh1fw")]
-visible = false
 
 [node name="firerate_timer" type="Timer" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder"]
 one_shot = true

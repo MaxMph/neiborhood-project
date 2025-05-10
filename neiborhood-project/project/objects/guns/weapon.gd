@@ -15,3 +15,5 @@ func shoot():
 	$bullet_marker/Sprite3D.rotation.z = randi_range(-20, 20)
 	$AnimationPlayer.play("shoot")
 	main.add_child.call_deferred(new_bullet)
+	$shoot.play()
+	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://t5rn6217mqlp"]
+[gd_scene load_steps=10 format=3 uid="uid://t5rn6217mqlp"]
 
 [ext_resource type="Script" uid="uid://c1mtwnuqx2mmy" path="res://project/objects/guns/weapon.gd" id="1_iq54v"]
 [ext_resource type="Texture2D" uid="uid://peyisemkxeot" path="res://project/textures/muzzle_flash.png" id="1_u2mc0"]
 [ext_resource type="Resource" uid="uid://485lhdai74nr" path="res://project/scripts/items/guns/ak 47.tres" id="2_ksl8v"]
+[ext_resource type="AudioStream" uid="uid://dss2kft0dq0fc" path="res://project/audio/gunshot_3.wav" id="4_4btbu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6cwux"]
 
@@ -173,3 +174,6 @@ skeleton = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ksl8v")
 }
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4btbu")
