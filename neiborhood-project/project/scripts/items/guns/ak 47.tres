@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_7gxk0")
-model = NodePath("cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/AK 47")
+model = NodePath("cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/AK 47")
 dmg = 24
 firerate = 20
 mag_cap = 20
@@ -15,5 +15,6 @@ value = 210
 weight = 10.0
 description = "argaregaerg"
 is_gun = true
+is_ammo = false
 is_consumable = false
 metadata/_custom_type_script = "uid://chbmdp2sce6a5"

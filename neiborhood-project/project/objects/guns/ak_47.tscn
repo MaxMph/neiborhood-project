@@ -177,3 +177,4 @@ libraries = {
 
 [node name="shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4btbu")
+max_polyphony = 6

@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Interact"):
 		#emit_signal("interact_pressed")
-		$"../cam-holder/head/cam/interaction ray".interact()
+		$"../cam-holder/head/lean_goal/cam/interaction ray".interact()
 
 	if Input.is_action_just_pressed("escape"):
 		get_tree().call_group("menu", "exit")

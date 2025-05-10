@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drp58m2axqnp5"]
+[gd_scene load_steps=14 format=3 uid="uid://drp58m2axqnp5"]
 
 [ext_resource type="Script" uid="uid://bp4wcekqixb61" path="res://project/player/player.gd" id="1_h5qux"]
 [ext_resource type="PackedScene" uid="uid://dfia2530i1e3a" path="res://project/objects/guns/pistol.tscn" id="2_at3b1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://baj57egluslyx" path="res://project/HUD and UI/inventory_ui.gd" id="3_b5m3j"]
 [ext_resource type="PackedScene" uid="uid://t5rn6217mqlp" path="res://project/objects/guns/ak_47.tscn" id="3_yh1fw"]
 [ext_resource type="Script" uid="uid://d34d1nsrnf31b" path="res://project/player/input_manager.gd" id="4_3rm1y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yh1fw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gj3lm"]
 
@@ -26,37 +28,46 @@ bg_color = Color(0.478507, 0.666937, 0.295973, 1)
 script = ExtResource("1_h5qux")
 
 [node name="cam-holder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="head" type="Node3D" parent="cam-holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="cam" type="Camera3D" parent="cam-holder/head"]
-transform = Transform3D(0.99598, 0, 0, 0, 0.99598, 0, 0, 0, 0.99598, 0, 0, 0)
+[node name="lean_goal" type="Node3D" parent="cam-holder/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="gun_holder" type="Node3D" parent="cam-holder/head/cam"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cam-holder/head/lean_goal"]
+transform = Transform3D(0.566561, 0, 0, 0, 0.566561, 0, 0, 0, 0.566561, 0, 1, 0)
+visible = false
+mesh = SubResource("SphereMesh_yh1fw")
+
+[node name="cam" type="Camera3D" parent="cam-holder/head/lean_goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="gun_holder" type="Node3D" parent="cam-holder/head/lean_goal/cam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.321849, -0.25131, -0.647032)
 
-[node name="aim_holder" type="Node3D" parent="cam-holder/head/cam/gun_holder"]
+[node name="aim_holder" type="Node3D" parent="cam-holder/head/lean_goal/cam/gun_holder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12371, -0.0436985)
 
-[node name="sub_aimholder" type="Node3D" parent="cam-holder/head/cam/gun_holder/aim_holder"]
+[node name="sub_aimholder" type="Node3D" parent="cam-holder/head/lean_goal/cam/gun_holder/aim_holder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119, 0.085)
 
-[node name="pistol" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("2_at3b1")]
+[node name="pistol" parent="cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("2_at3b1")]
 
-[node name="AK 47" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("3_yh1fw")]
+[node name="AK 47" parent="cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder" instance=ExtResource("3_yh1fw")]
 
-[node name="firerate_timer" type="Timer" parent="cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder"]
+[node name="firerate_timer" type="Timer" parent="cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder"]
 one_shot = true
 
-[node name="aim_Marker" type="Marker3D" parent="cam-holder/head/cam/gun_holder"]
+[node name="aim_Marker" type="Marker3D" parent="cam-holder/head/lean_goal/cam/gun_holder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32164, 0.24876, 0)
 
-[node name="interaction ray" type="RayCast3D" parent="cam-holder/head/cam"]
+[node name="interaction ray" type="RayCast3D" parent="cam-holder/head/lean_goal/cam"]
 target_position = Vector3(0, 0, -3)
 script = ExtResource("2_opain")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_gj3lm")
 
 [node name="inventory" type="Node" parent="."]

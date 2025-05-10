@@ -21,6 +21,8 @@ func next_line():
 	line_index += 1
 	if lines.size() > line_index:
 		$VBoxContainer/PanelContainer/MarginContainer/RichTextLabel.text = lines[line_index]
+	else:
+		exit()
 
 
 func _on_continue_pressed() -> void:

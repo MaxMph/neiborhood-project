@@ -17,6 +17,11 @@ var fov = 75
 var base_fov = 75
 var fov_mod = 0
 
+var leaning_l = false
+var leaning_r = false
+var leaning = false
+var leanspeed = 3
+
 var sense = 0.003
 
 #stats
@@ -28,14 +33,14 @@ var shots_fired = 0
 
 #noderef
 @onready var head: Node3D = $"cam-holder/head"
-@onready var cam = $"cam-holder/head/cam"
+@onready var cam = $"cam-holder/head/lean_goal/cam"
 
 @onready var inventory = $inventory
 
 @onready var primary_slot = load("res://project/scripts/items/guns/ak 47.tres")
-@onready var aim_marker = $"cam-holder/head/cam/gun_holder/aim_Marker"
-@onready var aim_holder = $"cam-holder/head/cam/gun_holder/aim_holder"
-@onready var firerate_timer = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/firerate_timer"
+@onready var aim_marker = $"cam-holder/head/lean_goal/cam/gun_holder/aim_Marker"
+@onready var aim_holder = $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder"
+@onready var firerate_timer = $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/firerate_timer"
 var aimholder_basepos = Vector3(0.0, 0.124, -0.044)
 
 func _ready() -> void:
@@ -52,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		fric_mod = 0
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -62,9 +67,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector3(0, velocity.y, 0), fric - fric_mod)
 	
+	speed_mod = 0
+	
 	#print(stamina_bar.value)
 	#not working
-	if Input.is_action_pressed("sprint") and stamina_bar.value > 0:
+	if Input.is_action_pressed("sprint") and stamina_bar.value > 0 and leaning == false:
 		stamina_bar.value -= 28 * delta
 		speed_mult = 1.5
 		fov_mod = move_toward(fov_mod, sprint_speed, 10 * delta)
@@ -88,7 +95,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("shoot") and primary_slot.semi_auto == true and Global.in_menu == false:
 		shoot()
-	
+
 	if Input.is_action_just_pressed("reload") and $"reload timer".is_stopped() == true:
 		$"reload timer".start()
 		await $"reload timer".timeout
@@ -98,6 +105,27 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("swap gun"):
 		gun_set()
 
+	if Input.is_action_pressed("lean left"):
+		lean(1, delta)
+		leaning_l = true
+	else:
+		leaning_l = false
+
+	if Input.is_action_pressed("lean right"):
+		lean(-1, delta)
+		leaning_r = true
+	else:
+		leaning_r = false
+
+	if leaning_l == false and leaning_r == false:
+		leaning = false
+		$"cam-holder/head/lean_goal".rotation.z = move_toward($"cam-holder/head/lean_goal".rotation.z, 0, leanspeed * delta)
+		#cam.rotation.z = move_toward(cam.rotation.z, 0, leanspeed * delta)
+		#$"cam-holder".position = $"cam-holder".position.move_toward(Vector3.ZERO, 6 * delta)
+		#rotation_degrees.z = move_toward(rotation_degrees.z, 0, 80 * delta)
+
+	$CollisionShape3D.global_rotation = $"cam-holder/head/lean_goal".global_rotation
+	$CollisionShape3D.global_position = $"cam-holder/head/lean_goal/MeshInstance3D".global_position
 	$"hud and UI/Control/hud/ammo label".text = str(primary_slot.mag_cap - shots_fired) + "/" + str(primary_slot.mag_cap)
 	cam.fov = fov + fov_mod
 	move_and_slide()
@@ -124,13 +152,29 @@ func hit(dmg):
 		queue_free()
 
 func gun_set():
-	if primary_slot == $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/pistol".res:
-		primary_slot = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/AK 47".res
+	if primary_slot == $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/pistol".res:
+		primary_slot = $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/AK 47".res
 	else:
-		primary_slot = $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder/pistol".res
-	for i in $"cam-holder/head/cam/gun_holder/aim_holder/sub_aimholder".get_children():
+		primary_slot = $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/pistol".res
+	for i in $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder".get_children():
 		if i != firerate_timer:
 			i.visible = false
 	get_node(str(primary_slot.model)).visible = true
 	firerate_timer.wait_time = primary_slot.firerate * 0.006
 	shots_fired = 0
+
+func lean(dir, delta):
+	leaning = true
+	$"cam-holder/head/lean_goal".rotation.z = move_toward($"cam-holder/head/lean_goal".rotation.z, 0.4 * dir, leanspeed * delta)
+	speed_mod = -2
+	#pass
+	#cam.rotation.z = move_toward(cam.rotation.z, 0.4 * dir, leanspeed * delta)
+	#$"cam-holder".rotation = cam.rotation.z * 0.4
+	#$"cam-holder".rotation = head.transform.basis * Vector3(dir * -0.4, 0, 0)#($"cam-holder".rotation.z 0.4 * dir) * 
+	#$"cam-holder".rotation.z = 0.4 * dir #$"cam-holder".rotation - head.transform.basis * Vector3(0, 0 ,dir)
+	#$"cam-holder".position =  $"cam-holder".position.move_toward(head.transform.basis * Vector3(dir * -0.4, 0, 0), 6 * delta)
+	#$"cam-holder".rotation.move_toward(head.transform.basis * Vector3.RIGHT, 0.6, 80 * delta)
+	#
+	#$CollisionShape3D.rotation.move_toward($CollisionShape3D.rotation * cam.rotation, 0.6, 80 * delta)
+	#rotate_object_local(transform.basis.z, 15 * dir)
+	#rotation = rotation.move_toward(cam.global_rotation, 80 * delta)

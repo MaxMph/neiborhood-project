@@ -2,7 +2,7 @@ extends RayCast3D
 
 var can_interact = false
 var interacting = false
-@onready var crosshair = $"../../../../hud and UI/Control/crosshair"
+@onready var crosshair = $"../../../../../hud and UI/Control/crosshair"
 
 #func _ready() -> void:
 	#connect("interact_pressed", interact())
