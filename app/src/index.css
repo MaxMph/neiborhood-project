@@ -10,6 +10,7 @@ body {
   max-width: 38rem;
   padding: 2rem;
   background-color: black;
+  border-color: var(--codegreen);
 }
 
 h1 {
@@ -27,4 +28,8 @@ hr {
 
 button {
   color: var(--codegreen);
+}
+
+div {
+  border-color: var(--codegreen);
 }
