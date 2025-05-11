@@ -1,0 +1,27 @@
+:root {
+    --grey: rgb(64, 61, 57);
+    --lightgrey: rgb(204, 197, 185);
+    --darkgrey: rgb(37, 36, 34);
+    --pop: rgb(235, 94, 40);
+    --whitegrey: rgb(255, 252, 242);
+    --codegreen: rgb(45, 228, 45);
+}
+
+
+body {
+    background-color: black;
+    color: var(--codegreen);
+    font-family: monospace;
+}
+
+.ads {
+    
+}
+
+.main {
+    background-color: var(--darkgrey);
+}
+
+hr {
+    border-color: var(--codegreen);
+}
