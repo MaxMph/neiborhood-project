@@ -21,4 +21,3 @@ material_override = SubResource("StandardMaterial3D_4kuul")
 mesh = SubResource("CapsuleMesh_fi4rp")
 
 [node name="dialouge" parent="." instance=ExtResource("2_unr15")]
-lines = Array[String](["hi, im a test npc!", "yep, thats right, I made it!", "this is my dialouge system! if your seeing this that means its working :)"])

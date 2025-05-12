@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+@export var lines: Array[String] = []
+
+func _ready() -> void:
+	for l in lines:
+		$dialouge.lines.append(l)
 
 func interacted():
 	if $dialouge.visible:

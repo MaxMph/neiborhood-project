@@ -10,7 +10,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdor0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jdor0"]
-radius = 8.0
+radius = 9.25043
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvs5m"]
 albedo_color = Color(1, 0, 0, 1)
@@ -35,6 +35,7 @@ shape = SubResource("CapsuleShape3D_jdor0")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.2091)
 shape = SubResource("SphereShape3D_jdor0")
 
 [node name="goal_rot" type="Node3D" parent="."]
@@ -65,4 +66,13 @@ one_shot = true
 [node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_g7rfr")
 
+[node name="proberay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -20)
+
+[node name="Timer" type="Timer" parent="proberay"]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="proberay/Timer" to="." method="_on_timer_timeout"]

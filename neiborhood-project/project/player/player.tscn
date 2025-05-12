@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://drp58m2axqnp5"]
+[gd_scene load_steps=15 format=3 uid="uid://drp58m2axqnp5"]
 
 [ext_resource type="Script" uid="uid://bp4wcekqixb61" path="res://project/player/player.gd" id="1_h5qux"]
 [ext_resource type="PackedScene" uid="uid://dfia2530i1e3a" path="res://project/objects/guns/pistol.tscn" id="2_at3b1"]
@@ -23,6 +23,10 @@ bg_color = Color(1, 0.361086, 0.353244, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si3v1"]
 bg_color = Color(0.478507, 0.666937, 0.295973, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yh1fw"]
+font_size = 24
+font_color = Color(0, 1, 0, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["hittable", "player"]]
 script = ExtResource("1_h5qux")
@@ -67,7 +71,6 @@ target_position = Vector3(0, 0, -3)
 script = ExtResource("2_opain")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_gj3lm")
 
 [node name="inventory" type="Node" parent="."]
@@ -88,6 +91,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="inventory" type="TabContainer" parent="hud and UI/Control" groups=["menu"]]
+visible = false
 custom_minimum_size = Vector2(800, 500)
 layout_mode = 1
 anchors_preset = 8
@@ -563,9 +567,31 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "4/6"
 
+[node name="extract_timer" type="Label" parent="hud and UI/Control/hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = 36.0
+offset_right = 18.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+label_settings = SubResource("LabelSettings_yh1fw")
+
+[node name="extract_timer" type="Timer" parent="hud and UI/Control/hud/extract_timer"]
+wait_time = 4.0
+one_shot = true
+
 [node name="reload timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="sprint timer" type="Timer" parent="."]
 
 [connection signal="tab_changed" from="hud and UI/Control/inventory" to="hud and UI/Control/inventory" method="_on_tab_changed"]
+[connection signal="timeout" from="hud and UI/Control/hud/extract_timer/extract_timer" to="." method="_on_extract_timer_timeout"]

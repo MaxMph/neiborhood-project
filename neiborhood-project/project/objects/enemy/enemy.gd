@@ -10,6 +10,7 @@ var look_speed = 0
 var opp
 var opp_last
 var opp_super_last
+var rand_pos
 
 @onready var firerate_timer = $firerate_timer
 
@@ -28,6 +29,12 @@ func _physics_process(delta: float) -> void:
 	
 	if tracking:
 		look_for(delta)
+		if opp != null:
+			$proberay.look_at(opp.global_position)
+			if $proberay.is_colliding() and $proberay.get_collider().is_in_group("player"):
+				pass
+			elif $proberay/Timer.is_stopped():
+				$proberay/Timer.start()
 		
 	
 	$MeshInstance3D2.global_position = target_pos
@@ -49,8 +56,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 
 func look_for(delta):
+	rand_pos = randi_range(-1, 1)
 	look_speed = target_pos.distance_to(opp_super_last) * 3
-	target_pos = target_pos.move_toward(opp_super_last, (3 + look_speed) * delta)
+	target_pos = target_pos.move_toward(opp_super_last + Vector3(rand_pos, rand_pos, rand_pos), (3 + look_speed) * delta)
 	$head.look_at(target_pos)
 	opp_super_last = opp_last
 	opp_last = opp.global_position
@@ -70,3 +78,11 @@ func reload():
 	await get_tree().create_timer(1).timeout
 	shots_fired = 0
 	
+
+
+func _on_timer_timeout() -> void:
+	print("timeout")
+	if $proberay.is_colliding() and $proberay.get_collider().is_in_group("player"):
+		pass
+	else:
+		tracking = false

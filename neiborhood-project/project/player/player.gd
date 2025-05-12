@@ -24,6 +24,8 @@ var leanspeed = 3
 
 var sense = 0.003
 
+var extracting = false
+
 #stats
 var max_health = 100
 var health = 100
@@ -124,6 +126,10 @@ func _physics_process(delta: float) -> void:
 		#$"cam-holder".position = $"cam-holder".position.move_toward(Vector3.ZERO, 6 * delta)
 		#rotation_degrees.z = move_toward(rotation_degrees.z, 0, 80 * delta)
 
+	if extracting == true:
+		$"hud and UI/Control/hud/extract_timer".text = str(1 + roundi($"hud and UI/Control/hud/extract_timer/extract_timer".time_left))
+	
+	Global.inv_items = $inventory.items
 	$CollisionShape3D.global_rotation = $"cam-holder/head/lean_goal".global_rotation
 	$CollisionShape3D.global_position = $"cam-holder/head/lean_goal/MeshInstance3D".global_position
 	$"hud and UI/Control/hud/ammo label".text = str(primary_slot.mag_cap - shots_fired) + "/" + str(primary_slot.mag_cap)
@@ -178,3 +184,17 @@ func lean(dir, delta):
 	#$CollisionShape3D.rotation.move_toward($CollisionShape3D.rotation * cam.rotation, 0.6, 80 * delta)
 	#rotate_object_local(transform.basis.z, 15 * dir)
 	#rotation = rotation.move_toward(cam.global_rotation, 80 * delta)
+
+func extract(start: bool):
+	if start == true:
+		extracting = true
+		$"hud and UI/Control/hud/extract_timer".visible = true
+		if $"hud and UI/Control/hud/extract_timer/extract_timer".is_stopped():
+			$"hud and UI/Control/hud/extract_timer/extract_timer".start()
+	else:
+		extracting = false
+		$"hud and UI/Control/hud/extract_timer".visible = false
+		$"hud and UI/Control/hud/extract_timer/extract_timer".stop()
+
+func _on_extract_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://project/hub.tscn")

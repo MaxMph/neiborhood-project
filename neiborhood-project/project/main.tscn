@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bup8m0e23s5cv"]
+[gd_scene load_steps=22 format=3 uid="uid://bup8m0e23s5cv"]
 
 [ext_resource type="Material" uid="uid://dpu0imkljexop" path="res://project/textures/testing/brick.tres" id="1_01gqb"]
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_s0i4r"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bh8m6706xsl3b" path="res://project/scripts/items/other/Coins.tres" id="12_4egix"]
 [ext_resource type="PackedScene" uid="uid://08bpxcv40kes" path="res://project/objects/enemy/enemy.tscn" id="12_168jr"]
 [ext_resource type="PackedScene" uid="uid://dobumgbf50lin" path="res://project/dialouge/test_npc.tscn" id="14_rxl5i"]
+[ext_resource type="Script" uid="uid://c3dmpe6quoepu" path="res://project/extract.gd" id="15_l6abs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_math5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -28,6 +29,14 @@ sky = SubResource("Sky_tkm4q")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1tlcb"]
+radius = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qrakv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxtw4"]
+albedo_color = Color(0, 1, 0, 1)
+
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -39,10 +48,10 @@ shadow_enabled = true
 environment = SubResource("Environment_mwk7i")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = ExtResource("1_01gqb")
 use_collision = true
-size = Vector3(29, 1, 40)
+size = Vector3(200, 1, 200)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.001, 0)
@@ -90,3 +99,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -6)
 
 [node name="test npc" parent="." instance=ExtResource("14_rxl5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 5)
+
+[node name="extract" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.558036, -17)
+script = ExtResource("15_l6abs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="extract"]
+shape = SubResource("SphereShape3D_1tlcb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="extract"]
+mesh = SubResource("SphereMesh_qrakv")
+surface_material_override/0 = SubResource("StandardMaterial3D_dxtw4")
+
+[connection signal="body_entered" from="extract" to="extract" method="_on_body_entered"]
+[connection signal="body_exited" from="extract" to="extract" method="_on_body_exited"]
