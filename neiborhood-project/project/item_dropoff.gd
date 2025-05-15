@@ -4,6 +4,7 @@ var value = 0
 #var item_values:Array = []
 var digits: Array = []
 var encoded_values: Array = []
+var final:String = ""
 #var pre_reversed: Array = []
 var key: Array = [-4, 8, 2, -3, 6, 1]
 var index = 0
@@ -43,7 +44,9 @@ func encode():
 	print(encoded_values)
 	#decode()
 	Global.shipments_made += 1
-	$CanvasLayer/Control/PanelContainer/RichTextLabel.text = str(encoded_values)
+	for i in encoded_values:
+		final += str(i) + " "
+	$CanvasLayer/Control/PanelContainer/RichTextLabel.text = final #str(encoded_values)
 	open()
 
 func decode():
