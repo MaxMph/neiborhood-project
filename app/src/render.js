@@ -1,4 +1,4 @@
-
+ 
 const money_text = document.getElementById('balance');
 const freemoneybutton = document.getElementById('calc_money');
 var money = 0
