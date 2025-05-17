@@ -1,31 +1,57 @@
-const shipment = document.getElementById('shipment_input')
-const outputtext = document.getElementById('end_val')
+const shipment = document.getElementById('shipment_input');
+const outputtext = document.getElementById('end_val');
 document.getElementById('send').onclick = decode;
 
-var start_array = []
+let start_array = [];
+let shipment_price = 0;
+
+let valid_code = true;
 
 function decode() {
-	console.log("works");
 	//console.log(JSON.parse(shipment.value));
 
 	//start_array = JSON.parse(shipment.value);
 	//for (let i = 0; )
+	start_array = shipment.value.trim().split(" ").map(Number)
+	//start_array = shipment.value.split();
+	for (let i = 0; i < start_array.length; i++) {
+		let curnum = start_array[i]
+		console.log(curnum);
+		console.log("ababarfer");
+		//console.log(start_array.length);
 
-	start_array = shipment.value.split(" ").map(Number)
-	start_array = shipment.value.split();
-	for (let i = 0; i < start_array.length; i++)
-		console.log(start_array[i]);
-		console.log("ababarfer")
-		console.log(start_array.length);
+		if (start_array[i] == NaN) {
+			valid_code = false;
+		}
 
+		if (valid_code != Number {
+			_validcode();
+		} else {
+			_invalidcode();
+		}
+	}
 	//start_array = shipment.value.split();
 	//for (let i = 0; i < start_array.length; i++)
 	//	console.log(start_array[i]);
 	//	console.log("ababarfer")
 	//console.log(start_array.length);
 
-	outputtext.textContent = shipment.value;
+	//outputtext.textContent = shipment.value;
 }
 
+function _validcode() {
+	//outputtext.textContent = shipment.value;
+	console.log("works");
+	outputtext.textContent = "";
+	for (let i = 0; i < start_array.length; i++) {
+		outputtext.textContent + String(start_array[i])
+
+
+	}
+}
+
+function _invalidcode() {
+	outputtext.textContent = "Invalid Code"
+}
 //[4, 72, -16, 7, 7]
 //4 72 -16 7 7
