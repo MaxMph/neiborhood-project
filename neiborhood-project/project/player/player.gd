@@ -39,6 +39,7 @@ var shots_fired = 0
 
 @onready var inventory = $inventory
 
+
 @onready var primary_slot = load("res://project/scripts/items/guns/ak 47.tres")
 @onready var aim_marker = $"cam-holder/head/lean_goal/cam/gun_holder/aim_Marker"
 @onready var aim_holder = $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder"
@@ -48,6 +49,7 @@ var aimholder_basepos = Vector3(0.0, 0.124, -0.044)
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	gun_set()
+	load_inv_from_global()
 
 func _physics_process(delta: float) -> void:
 	
@@ -197,4 +199,8 @@ func extract(start: bool):
 		$"hud and UI/Control/hud/extract_timer/extract_timer".stop()
 
 func _on_extract_timer_timeout() -> void:
+	Global.inv_items = inventory.items
 	get_tree().change_scene_to_file("res://project/hub.tscn")
+
+func load_inv_from_global():
+	inventory.items = Global.inv_items

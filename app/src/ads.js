@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 //const { fsync } = require("original-fs");
 
 //const body = getElementById('bod').onLoad = adify;
@@ -12,4 +13,12 @@ function adify() {
 
     //console.log(fileList);
 	
+=======
+const ads_L = getElementById('ads_L');
+const ads_R = getElementById('ads_R');
+let ad_sources = ["../ads/FORGEHACK.gif", "../ads/EXOFIGHTS.gif", "../ads/102 helmet.png"];
+
+func adify() {
+	document.createElement('img');
+>>>>>>> Stashed changes
 }

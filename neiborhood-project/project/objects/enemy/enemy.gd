@@ -14,12 +14,16 @@ var rand_pos
 
 @onready var firerate_timer = $firerate_timer
 
+@onready var dropbox = preload("res://project/item_sack.tscn")
+@export var droploot: Array[Resource] = []
+@onready var main = get_tree().get_root().get_node("Main")
 
 var tracking = false
 
 
 func _ready() -> void:
 	target_pos = global_position
+	droploot.append(load("res://project/scripts/items/other/Gold Watch.tres"))
 
 
 func _physics_process(delta: float) -> void:
@@ -43,9 +47,18 @@ func _physics_process(delta: float) -> void:
 func hit(dmg):
 	health -= dmg
 	if health <= 0:
-		queue_free()
+		die()
 	$hit.play()
 
+func die():
+	print(droploot)
+	if droploot.is_empty() == false:
+		print("instance")
+		var new_box = dropbox.instantiate()
+		new_box.items = droploot
+		new_box.global_transform = global_transform
+		main.add_child.call_deferred(new_box)
+	queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
