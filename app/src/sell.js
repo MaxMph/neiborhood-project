@@ -1,3 +1,5 @@
+//const { app } = require("electron");
+
 const shipment = document.getElementById('shipment_input');
 const outputtext = document.getElementById('end_val');
 const sell_button = document.getElementById('sell');
@@ -7,6 +9,7 @@ sell_button.onclick = sold;
 
 let start_array = [];
 let shipment_price = 0;
+
 
 function code_tested() {
 	if (check_validity() == true){
@@ -42,7 +45,7 @@ function check_validity() {
 }
 
 function decode(){
-	let final_value = 0;
+	
 	let final_text = "";
 	start_array.pop();
 	start_array.pop();
@@ -54,6 +57,7 @@ function decode(){
 		final_text = final_text + String(start_array[i]);
 		//final_value += start_array[i]
 	}
+	final_value = Number(final_text)
 	return final_text //String(final_value) //final_text
 	//start_array.remove(start_array.lastIndex);
 	//start_array.remove(start_array.lastIndex);
@@ -73,6 +77,17 @@ function _invalidcode() {
 //4 72 -16 7 7
 
 function sold() {
+	app.getPath("userData")
+
+	
+	console.log(window.storageAPI.get_money)
+	//  let stored_money = window.;
+	//  if (window.storageAPI.getMoney) {
+	//  	storage.set('money', final_value + stored_money);
+	//  	console.log();
+	//  }
+
+	
 	outputtext.textContent = "";
 	sell_button.disabled = true;
 }
