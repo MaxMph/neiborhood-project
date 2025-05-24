@@ -79,8 +79,8 @@ function _invalidcode() {
 function sold() {
 	app.getPath("userData")
 
-	
-	console.log(window.storageAPI.get_money)
+
+	//console.log(window.storageAPI.get_money)
 	//  let stored_money = window.;
 	//  if (window.storageAPI.getMoney) {
 	//  	storage.set('money', final_value + stored_money);
