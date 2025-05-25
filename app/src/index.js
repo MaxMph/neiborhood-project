@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 
 const Store = require('electron-store');
@@ -33,12 +33,15 @@ const createWindow = () => {
 
 
 // Provide value to renderer
-ipcMain.handle('get-storage', () => {
+
+ipcMain.handle('get_storage', () => {
+  console.log("get");
   return store.get('money', 0); // default to 0
 });
 
 // Receive new number from renderer and store it
-ipcMain.handle('set-storage', (event, value) => {
+ipcMain.handle('set_storage', (event, value) => {
+  console.log("set");
   store.set('money', value);
 });
 

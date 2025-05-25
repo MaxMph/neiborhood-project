@@ -21,20 +21,23 @@
 
 const { contextBridge, ipcRenderer } = require("electron");
 //const storage = new store()
-const API = {
+// const API = {
+//     get_money: () => ipcRenderer.invoke('get_storage'),
+//     set_money: (value) => ipcRenderer.invoke('set_storage', value),
+// }
+
+
+contextBridge.exposeInMainWorld("api", {
     get_money: () => ipcRenderer.invoke('get_storage'),
-    set_money: (value) => ipcRenderer.invoke('set_storage'),
-}
-
-
-contextBridge.exposeInMainWorld("api", API)
+    set_money: (value) => ipcRenderer.invoke('set_storage', value),
+});
 
 // const { contextBridge, ipcRenderer } = require('electron');
 // const Store = require('./electron-store');
 
 // const store = new Store();
 
-// console.log("preload works")
+console.log("preload works")
 
 // contextBridge.exposeInMainWorld('electronAPI', {
 //   getMoney: () => store.get('money'),

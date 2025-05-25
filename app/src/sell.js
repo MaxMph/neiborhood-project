@@ -3,6 +3,7 @@
 const shipment = document.getElementById('shipment_input');
 const outputtext = document.getElementById('end_val');
 const sell_button = document.getElementById('sell');
+const ballance = document.getElementById('ballance');
 const key = [-4, 8, 2, -3, 6, 1]
 document.getElementById('send').onclick = code_tested;
 sell_button.onclick = sold;
@@ -76,10 +77,22 @@ function _invalidcode() {
 //[4, 72, -16, 7, 7]
 //4 72 -16 7 7
 
-function sold() {
+async function sold() {
+	//let stored_money = await window.api.get_money();
+	//ballance.textContent = stored_money || '(No value)';
+	ballance.textContent = "20"
 	//app.getPath("userData")
-	console.log(window.api);
+	//console.log(window.api);
+	//console.log(final_value);
+	//window.api.set_money(final_value + stored_money);
+	//console.log(window.api.get_money());
+	//ballance.textContent = final_value; // + stored_money;
+	
+	//ballance.textContent = String(final_value + stored_money);
+	//ballance.textContent = String(window.api.get_money());
 
+	// console.log(window.api.get_money())
+	// console.log(window.api.get_money())
 	//console.log(window.storageAPI.get_money)
 	//  let stored_money = window.;
 	//  if (window.storageAPI.getMoney) {
