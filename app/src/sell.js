@@ -8,9 +8,20 @@ const key = [-4, 8, 2, -3, 6, 1]
 document.getElementById('send').onclick = code_tested;
 sell_button.onclick = sold;
 
+document.getElementById('reset').onclick = clear_ballance;
+
 let start_array = [];
 let shipment_price = 0;
 
+
+document.addEventListener("DOMContentLoaded", function() {
+	set_ballance();
+})
+
+function clear_ballance() {
+	window.api.set_money(0);
+	set_ballance();
+}
 
 function code_tested() {
 	if (check_validity() == true){
@@ -78,15 +89,16 @@ function _invalidcode() {
 //4 72 -16 7 7
 
 async function sold() {
-	//let stored_money = await window.api.get_money();
+		//let stored_money = await window.api.get_money('money');
 	//ballance.textContent = stored_money || '(No value)';
-	ballance.textContent = "20"
+	//ballance.textContent = "20"
 	//app.getPath("userData")
 	//console.log(window.api);
 	//console.log(final_value);
-	//window.api.set_money(final_value + stored_money);
+	//window.api.set_money(final_value);// + stored_money);
+		//window.api.set_money(final_value + stored_money);
 	//console.log(window.api.get_money());
-	//ballance.textContent = final_value; // + stored_money;
+		//ballance.textContent = stored_money; //final_value + stored_money;
 	
 	//ballance.textContent = String(final_value + stored_money);
 	//ballance.textContent = String(window.api.get_money());
@@ -99,8 +111,17 @@ async function sold() {
 	//  	storage.set('money', final_value + stored_money);
 	//  	console.log();
 	//  }
+	let stored_money = await window.api.get_money('money');
 
+	await window.api.set_money(final_value + stored_money);
+
+	set_ballance()
 	
 	outputtext.textContent = "";
 	sell_button.disabled = true;
+}
+
+async function set_ballance() {
+
+	ballance.textContent = await window.api.get_money();
 }

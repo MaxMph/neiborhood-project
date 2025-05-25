@@ -43,6 +43,7 @@ ipcMain.handle('get_storage', () => {
 ipcMain.handle('set_storage', (event, value) => {
   console.log("set");
   store.set('money', value);
+  console.log(store.get('money', 0));
 });
 
 // This method will be called when Electron has finished
