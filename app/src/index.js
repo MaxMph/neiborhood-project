@@ -1,6 +1,10 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
+const Store = require('electron-store');
+const store = new Store();
+//import Store from 'electron-store';
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -13,9 +17,12 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname,'preload.js'),
-      nodeIntegration: true
     },
   });
+
+  // const store = new Store();
+  // store.set('example', 'hello world');
+  // console.log(store.get('example'));
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'grid_test.html'));
@@ -23,6 +30,17 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
+
+
+// Provide value to renderer
+ipcMain.handle('get-storage', () => {
+  return store.get('money', 0); // default to 0
+});
+
+// Receive new number from renderer and store it
+ipcMain.handle('set-storage', (event, value) => {
+  store.set('money', value);
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -50,3 +68,4 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+

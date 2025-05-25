@@ -77,8 +77,8 @@ function _invalidcode() {
 //4 72 -16 7 7
 
 function sold() {
-	app.getPath("userData")
-
+	//app.getPath("userData")
+	console.log(window.api);
 
 	//console.log(window.storageAPI.get_money)
 	//  let stored_money = window.;
