@@ -34,3 +34,10 @@ body {
 hr {
     border-color: var(--codegreen);
 }
+
+#notes_input {
+    resize: none;
+    width: 80%;
+    height: 260px;
+    margin-top: 20px;
+}

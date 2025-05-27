@@ -21,7 +21,7 @@ const body = document.getElementById('bod')
 bod.onload = adify;
 
 function adify() {
-	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	//console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	
 	for (let i = 0; i < ad_num; i++) {
 		rand_ad(ads_L);
@@ -30,7 +30,7 @@ function adify() {
 }
 
 function rand_ad(ad_holder) {
-	console.log("rand");
+	//console.log("rand");
 	let img = document.createElement('img');
 	//img.src = "../ads/FORGEHACK.gif";
 	img.src = ad_sources[Math.floor(Math.random() * ad_sources.length)]

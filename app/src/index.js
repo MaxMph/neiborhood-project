@@ -46,6 +46,17 @@ ipcMain.handle('set_storage', (event, value) => {
   console.log(store.get('money', 0));
 });
 
+ipcMain.handle('set_notes', (event, value) => {
+  console.log("notes set");
+  store.set('notes', value);
+})
+
+ipcMain.handle('get_notes', () => {
+  console.log("get notes");
+  return store.get('notes', ""); // default to 0
+});
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

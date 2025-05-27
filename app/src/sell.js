@@ -123,5 +123,5 @@ async function sold() {
 
 async function set_ballance() {
 
-	ballance.textContent = await window.api.get_money();
+	ballance.textContent = "$" + await window.api.get_money();
 }
