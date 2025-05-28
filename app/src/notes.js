@@ -7,6 +7,7 @@ page_height.addEventListener("input", update_settings);
 
 document.addEventListener("DOMContentLoaded", function() {
 	page_height.value = 20
+	spell_correct.checked = true
 	loadtext();
 	update_settings();
 })
