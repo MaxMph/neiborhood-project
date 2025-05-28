@@ -38,6 +38,7 @@ hr {
 #notes_input {
     resize: none;
     width: 80%;
-    height: 260px;
+    /*height: 260px;*/
     margin-top: 20px;
+
 }
