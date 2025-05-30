@@ -17,6 +17,7 @@ func interacted():
 		index = 0
 		digits.clear()
 		encoded_values.clear()
+		final = ""
 		for i in Global.inv_items:
 			value += i.value
 			#item_values.append(i.value)
@@ -87,9 +88,21 @@ func decode():
 func open():
 	Global.in_menu = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	$CanvasLayer/Control.visible = true
+	#$CanvasLayer/Control.visible = true
+	$CanvasLayer/Control/VBoxContainer.visible = true
 
 func exit():
 	Global.in_menu = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$CanvasLayer/Control.visible = false
+	$CanvasLayer/Control/PanelContainer.visible = false
+	$CanvasLayer/Control/VBoxContainer.visible = false
+
+
+func _on_cancel_pressed() -> void:
+	exit()
+
+
+func _on_continue_pressed() -> void:
+	$CanvasLayer/Control/VBoxContainer.visible = false
+	$CanvasLayer/Control/PanelContainer.visible = true
+	Global.inv_items.clear()

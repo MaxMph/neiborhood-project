@@ -112,7 +112,6 @@ skeleton = NodePath("../..")
 [node name="CanvasLayer" type="CanvasLayer" parent="item_dropoff"]
 
 [node name="Control" type="Control" parent="item_dropoff/CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,6 +121,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="item_dropoff/CanvasLayer/Control"]
+visible = false
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 1
 anchors_preset = 8
@@ -145,9 +145,39 @@ horizontal_alignment = 1
 vertical_alignment = 1
 selection_enabled = true
 
+[node name="VBoxContainer" type="VBoxContainer" parent="item_dropoff/CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -20.0
+offset_right = 56.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="item_dropoff/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Do You Want To Sell Your Inventory?"
+
+[node name="Continue" type="Button" parent="item_dropoff/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Cancel" type="Button" parent="item_dropoff/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
 [node name="item_sack" parent="." instance=ExtResource("5_rtvws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -5)
 items = Array[Resource]([ExtResource("6_rlgil"), ExtResource("7_sji7m"), ExtResource("8_j4ffi"), ExtResource("7_sji7m"), ExtResource("7_sji7m"), ExtResource("7_sji7m")])
 
 [node name="level_loader" type="Node" parent="."]
 script = ExtResource("9_rlgil")
+
+[connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Continue" to="item_dropoff" method="_on_continue_pressed"]
+[connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Cancel" to="item_dropoff" method="_on_cancel_pressed"]
