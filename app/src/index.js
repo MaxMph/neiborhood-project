@@ -2,8 +2,13 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 
 const Store = require('electron-store');
+//const { useRef } = require('react');
 const store = new Store();
 //import Store from 'electron-store';
+
+//import music from "./First Project!!!!!!!.wav"
+var sound_player = require('play-sound')(opts = {});
+const music = "./First Project!!!!!!!.wav";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -29,6 +34,8 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  //background_music();
 };
 
 
@@ -55,6 +62,18 @@ ipcMain.handle('get_notes', () => {
   console.log("get notes");
   return store.get('notes', ""); // default to 0
 });
+
+
+//function background_music() {
+  //music = new Audio("./First Project!!!!!!! cut 1.mp3");
+  //music = new Audio(music);
+  //music.play();
+
+//   sound_player.play('./First Project!!!!!!! cut 1.mp3', function(err){
+//   if (err) throw err
+//   })
+//   console.log("music");
+// }
 
 
 // This method will be called when Electron has finished

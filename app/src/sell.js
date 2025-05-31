@@ -1,5 +1,5 @@
 //const { app } = require("electron");
-
+// import music from "./First Project!!!!!!! cut 1.mp3"
 const shipment = document.getElementById('shipment_input');
 const outputtext = document.getElementById('end_val');
 const sell_button = document.getElementById('sell');
@@ -16,7 +16,14 @@ let shipment_price = 0;
 
 document.addEventListener("DOMContentLoaded", function() {
 	set_ballance();
+	//background_music
 })
+
+
+// function background_music() {
+// 	new Audio(music)
+// }
+
 
 function clear_ballance() {
 	window.api.set_money(0);
