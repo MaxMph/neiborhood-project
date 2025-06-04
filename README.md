@@ -16,11 +16,17 @@ this project is a mess, but I have put a lot of work into little features that y
 in the on-planet side (godot) there are some controls you should know:
 
 wasd to move
+
 shift to sprint
+
 a and w to lean
+
 left mouse to shoot
+
 right mouse to ads
+
 tab to change guns
+
 i to open your inventory
 
 I dont have a pause menu rn so when you want to close the program enter your inventory to free your mouse :)
