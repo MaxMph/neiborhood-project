@@ -12,6 +12,7 @@ document.getElementById('reset').onclick = clear_ballance;
 
 let start_array = [];
 let shipment_price = 0;
+let used_ids = [];
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -53,6 +54,11 @@ function check_validity() {
 		}
 
 	}
+
+	for (let i = 0; i < used_ids.length; i++)
+		if (start_array[start_array.length - 1] = used_ids) {
+			valid_code = false
+		}
 
 	//check if code length is validated
 	if (start_array[start_array.length - 2] !== (10 - (start_array.length - 2))) {
