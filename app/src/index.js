@@ -42,27 +42,36 @@ const createWindow = () => {
 // Provide value to renderer
 
 ipcMain.handle('get_storage', () => {
-  console.log("get");
+  //console.log("get");
   return store.get('money', 0); // default to 0
 });
 
 // Receive new number from renderer and store it
 ipcMain.handle('set_storage', (event, value) => {
-  console.log("set");
+  //console.log("set");
   store.set('money', value);
-  console.log(store.get('money', 0));
+  //console.log(store.get('money', 0));
 });
 
 ipcMain.handle('set_notes', (event, value) => {
-  console.log("notes set");
+  //console.log("notes set");
   store.set('notes', value);
 })
 
 ipcMain.handle('get_notes', () => {
-  console.log("get notes");
-  return store.get('notes', ""); // default to 0
+  //console.log("get notes");
+  return store.get('notes', "");
 });
 
+ipcMain.handle('set_used_ids', (event, value) => {
+  console.log("set id");
+  store.set('ids', value);
+})
+
+ipcMain.handle('get_used_ids', () => {
+  console.log("get ids");
+  return store.get('ids', 0); // default to 0
+});
 
 //function background_music() {
   //music = new Audio("./First Project!!!!!!! cut 1.mp3");

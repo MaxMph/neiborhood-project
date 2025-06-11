@@ -48,3 +48,21 @@ hr {
 a {
     color: lightskyblue;
 }
+
+button {
+    color: var(--codegreen);
+    background-color: var(--darkgrey);
+}
+
+dialog {
+    background-color: var(--grey);
+}
+
+#popup_text {
+    color: var(--codegreen);
+}
+/*
+input {
+    color: lightgrey;
+    background-color: var(--lightgrey);
+}*/

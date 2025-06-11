@@ -30,6 +30,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("api", {
     get_money: () => ipcRenderer.invoke('get_storage'),
     set_money: (value) => ipcRenderer.invoke('set_storage', value),
+    get_used_ids: () => ipcRenderer.invoke('get_used_ids'),
+    set_used_ids: (value) => ipcRenderer.invoke('set_used_ids', value),
     set_notes: (value) => ipcRenderer.invoke('set_notes', value),
     get_notes: () => ipcRenderer.invoke('get_notes'),
 });

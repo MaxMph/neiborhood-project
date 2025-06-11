@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="style.css"/>
+    <script defer src="travel tickets.js"></script>
     <script defer src="ads.js"></script>
 </head>
 <body id="bod" style="margin: 0px;">
@@ -14,11 +15,38 @@
 
         <div class="main" style="text-align: center;">
             <div style="margin: 6%;">
-                <h1>Drop Locations</h1>
+                <h1>Drop Location Passes</h1>
                 <p>Purchase acsess tokens to varios zone locations.</p>
                 <hr style="width: 90%;">
                 <a href="grid_test.html">Main</a>
                 <hr style="width: 90%;">
+                <h3>Current Ballance</h3>
+                <div style="border-style: solid; width: 40%; margin: 0 auto;"> <p id="ballance">$0</p> </div>
+                <hr style="width: 90%;">
+                <div>
+                    <h3>Western Planes</h3>
+                    <P>Minimal radiation, mostly undeveloped.</P>
+                    <button id="price1">$placeholder</button>
+                    <hr style="width: 90%;">
+                </div>
+                <div>
+                    <h3>Northern Forest</h3>
+                    <P>Harsh Weather, blablabla</P>
+                    <button id="price2">$placeholder</button>
+                    <hr style="width: 90%;">
+                </div>
+                <div>
+                    <h3>Fallen City</h3>
+                    <P>High Radiation, lots</P>
+                    <button id="price3">$placeholder</button>
+                    <hr style="width: 90%;">
+                </div>
+                <dialog id="popup">
+                    <h3 id="popup_text">352345</h3>
+                    <p>copy and paste into onworld drop selection. <br>
+                    (or put it into your notes to save it for later!)</p>
+                    <button id="close">Close</button>
+                </dialog>
             </div>
         </div>
 
