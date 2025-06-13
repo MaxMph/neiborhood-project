@@ -62,10 +62,13 @@ function create_ticket(num, id) {
         //ticket += String(num);
         if (i == 3) {
             ticket += String(num);
+            ticket += " ";
             ticket += String(id);
+            ticket += " ";
         }
         else {
-            ticket += String(Math.floor(Math.random() * 10));
+            ticket += String(Math.floor(Math.random() * (id * 10) ));
+            ticket += " ";
         }
     }
     console.log("works");

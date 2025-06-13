@@ -96,6 +96,53 @@ use_collision = true
 size = Vector3(5, 4, 1)
 script = ExtResource("3_6tjby")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="deployment door"]
+visible = false
+
+[node name="Control" type="Control" parent="deployment door/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="deployment door/CanvasLayer/Control"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="deployment door/CanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "Enter Ticket Code Here"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="close" type="Button" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="enter" type="Button" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Enter"
+
 [node name="item_dropoff" type="StaticBody3D" parent="." groups=["interactable", "menu"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8)
 script = ExtResource("4_xj35j")
@@ -179,5 +226,7 @@ items = Array[Resource]([ExtResource("6_rlgil"), ExtResource("7_sji7m"), ExtReso
 [node name="level_loader" type="Node" parent="."]
 script = ExtResource("9_rlgil")
 
+[connection signal="pressed" from="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer/close" to="deployment door" method="_on_close_pressed"]
+[connection signal="pressed" from="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer/enter" to="deployment door" method="_on_enter_pressed"]
 [connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Continue" to="item_dropoff" method="_on_continue_pressed"]
 [connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Cancel" to="item_dropoff" method="_on_cancel_pressed"]
