@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cp8qcvmysidx2"]
+[gd_scene load_steps=19 format=3 uid="uid://cp8qcvmysidx2"]
 
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_j8t7o"]
 [ext_resource type="PackedScene" uid="uid://dobumgbf50lin" path="res://project/dialouge/test_npc.tscn" id="2_iwa8x"]
@@ -31,6 +31,9 @@ albedo_color = Color(0.351563, 0.351563, 0.351563, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tjby"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlgil"]
+font_color = Color(1, 0.2, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6tjby"]
 size = Vector3(3, 1.58105, 1)
@@ -130,6 +133,13 @@ alignment = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "Enter Ticket Code Here"
+
+[node name="Label" type="Label" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Invalid Ticket Code"
+label_settings = SubResource("LabelSettings_rlgil")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
