@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dobumgbf50lin" path="res://project/dialouge/test_npc.tscn" id="2_iwa8x"]
 [ext_resource type="Material" uid="uid://devbrrc5k4ghd" path="res://project/textures/concreate.tres" id="2_sji7m"]
 [ext_resource type="Script" uid="uid://yusbf7j52cn2" path="res://project/deployment_door.gd" id="3_6tjby"]
+[ext_resource type="Material" uid="uid://s1dgpoib05dv" path="res://project/textures/gunmetal.tres" id="4_j4ffi"]
 [ext_resource type="Script" uid="uid://c8qo8lf4dmo4o" path="res://project/item_dropoff.gd" id="4_xj35j"]
 [ext_resource type="PackedScene" uid="uid://8j7nkl1rvtar" path="res://project/item_sack.tscn" id="5_rtvws"]
 [ext_resource type="Resource" uid="uid://bh8m6706xsl3b" path="res://project/scripts/items/other/Coins.tres" id="6_rlgil"]
@@ -29,9 +30,6 @@ volumetric_fog_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwa8x"]
 albedo_color = Color(0.351563, 0.351563, 0.351563, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tjby"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rlgil"]
 font_color = Color(1, 0.2, 0.2, 1)
@@ -104,7 +102,7 @@ lines = Array[String](["I must say Im suprised to see you back here.", "survivin
 
 [node name="deployment door" type="CSGBox3D" parent="." groups=["interactable", "menu"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.41557)
-material_override = SubResource("StandardMaterial3D_6tjby")
+material_override = ExtResource("4_j4ffi")
 use_collision = true
 size = Vector3(5, 4, 1)
 script = ExtResource("3_6tjby")
@@ -173,6 +171,7 @@ shape = SubResource("BoxShape3D_6tjby")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item_dropoff"]
 transform = Transform3D(2.94, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("4_j4ffi")
 mesh = SubResource("BoxMesh_xj35j")
 skeleton = NodePath("../..")
 

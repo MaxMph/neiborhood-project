@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://08bpxcv40kes"]
+[gd_scene load_steps=14 format=3 uid="uid://08bpxcv40kes"]
 
 [ext_resource type="Script" uid="uid://b3pqivxdvkx8c" path="res://project/objects/enemy/enemy.gd" id="1_jdor0"]
 [ext_resource type="Resource" uid="uid://bqmco1gbowm1e" path="res://project/scripts/items/guns/pistol.tres" id="2_s54d6"]
 [ext_resource type="PackedScene" uid="uid://dfia2530i1e3a" path="res://project/objects/guns/pistol.tscn" id="2_wvs5m"]
+[ext_resource type="Texture2D" uid="uid://dleomrtoj1lu1" path="res://project/textures/forest_leaves_02_diffuse_1k-204x204.png" id="3_7hcvn"]
 [ext_resource type="AudioStream" uid="uid://bnqu3cf7y7sc3" path="res://project/audio/killsound.wav" id="4_g7rfr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sodvu"]
+albedo_color = Color(0.427448, 0.368338, 0.380309, 1)
+albedo_texture = ExtResource("3_7hcvn")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fjbnw"]
 
@@ -19,7 +24,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_s54d6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdor0"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.502919, 0.141492, 0.158544, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wvs5m"]
 
@@ -28,6 +33,7 @@ script = ExtResource("1_jdor0")
 gun = ExtResource("2_s54d6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sodvu")
 mesh = SubResource("CapsuleMesh_fjbnw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -42,6 +48,7 @@ shape = SubResource("CapsuleShape3D_g7rfr")
 [node name="goal_rot" type="Node3D" parent="."]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_wvs5m")
 mesh = SubResource("SphereMesh_s54d6")
 

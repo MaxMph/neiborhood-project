@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dobumgbf50lin"]
+[gd_scene load_steps=8 format=3 uid="uid://dobumgbf50lin"]
 
 [ext_resource type="Script" uid="uid://b7ewm0mvi5kbo" path="res://project/dialouge/npc.gd" id="1_m8b2a"]
 [ext_resource type="PackedScene" uid="uid://5uhg1ui8hng8" path="res://project/dialouge/dialouge.tscn" id="2_unr15"]
@@ -6,9 +6,14 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rg08o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kuul"]
-albedo_color = Color(0.811627, 0.606988, 1, 1)
+albedo_color = Color(0.301525, 0.235737, 0.251072, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fi4rp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8b2a"]
+albedo_color = Color(0.255103, 0.106256, 0.110822, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_unr15"]
 
 [node name="test npc" type="CharacterBody3D" groups=["interactable"]]
 script = ExtResource("1_m8b2a")
@@ -21,3 +26,12 @@ material_override = SubResource("StandardMaterial3D_4kuul")
 mesh = SubResource("CapsuleMesh_fi4rp")
 
 [node name="dialouge" parent="." instance=ExtResource("2_unr15")]
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414873, 0)
+
+[node name="head_face" type="MeshInstance3D" parent="head"]
+transform = Transform3D(0.8, 0, 0, 0, -6.99382e-09, -0.8, 0, 0.16, -3.49691e-08, 0, 0, -0.46064)
+material_override = SubResource("StandardMaterial3D_m8b2a")
+mesh = SubResource("CylinderMesh_unr15")
+skeleton = NodePath("../..")

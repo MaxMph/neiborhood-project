@@ -16,3 +16,5 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("next"):
 		if $dialouge.visible == true:
 			$dialouge.next_line()
+	
+	$head.look_at(Global.player.global_position)

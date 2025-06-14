@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dacbr2tjhnupu"]
+[gd_scene load_steps=19 format=3 uid="uid://dacbr2tjhnupu"]
 
 [ext_resource type="Script" uid="uid://cyftgtnrx4a6t" path="res://world.gd" id="1_036b0"]
 [ext_resource type="Texture2D" uid="uid://dleomrtoj1lu1" path="res://project/textures/forest_leaves_02_diffuse_1k-204x204.png" id="1_aqk2v"]
@@ -8,6 +8,9 @@
 [ext_resource type="Material" uid="uid://devbrrc5k4ghd" path="res://project/textures/concreate.tres" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://campdd8yf2ee0" path="res://project/skyscraper_1.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://08bpxcv40kes" path="res://project/objects/enemy/enemy.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://dn8flgjo7fktm" path="res://tree_1.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://d0rt7gyu2dwmi" path="res://project/building_2.tscn" id="10_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://o2ujsr0lmfck" path="res://project/building_1.tscn" id="11_k3n1d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dwbse"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -120,7 +123,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ic0uy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 1, -49)
 
 [node name="2" type="Marker3D" parent="drop locations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -60)
 
 [node name="3" type="Marker3D" parent="drop locations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 158)
@@ -130,81 +133,97 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 158)
 [node name="CSGBox3D2" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.5, 0)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(223, 4, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -71, 1.5, 44.5)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(312, 4, 1)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0, 0.15914, -0.987256, 0, 0.987256, 0.15914, 1, 0, 0, -49, 0.5, 3.50002)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(16, 4, 1)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Node"]
 transform = Transform3D(-0.998242, -0.00943251, 0.0585162, 0, 0.987256, 0.15914, -0.0592716, 0.15886, -0.98552, -42, 0.5, -4.92181)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(16, 4, 1)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Node"]
 transform = Transform3D(-0.998242, -0.00943251, 0.0585162, 0, 0.987256, 0.15914, -0.0592716, 0.15886, -0.98552, -42, 0.5, 49.0782)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(16, 4, 1)
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.0592716, -0.15886, 0.98552, 0, 0.987256, 0.15914, -0.998242, -0.00943252, 0.0585162, -33, 0.5, 50.0782)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(16, 4, 1)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.0592716, -0.15886, 0.98552, 0, 0.987256, 0.15914, -0.998242, -0.00943252, 0.0585162, 7.92522, 0.5, 39.9138)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(18.5234, 4, 1)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.0592716, -0.15886, 0.98552, 0, 0.987256, 0.15914, -0.998242, -0.00943252, 0.0585162, 26.0967, 0.348679, 38.1804)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(13.397, 4, 1)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.0592716, -0.15886, 0.98552, 0, 0.987256, 0.15914, -0.998242, -0.00943252, 0.0585162, 25.9754, 0.348679, 70.2235)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(17.4902, 4, 1)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.998242, 0.00943254, -0.0585163, 9.29685e-10, 0.987256, 0.15914, 0.0592717, -0.158861, 0.98552, 18.993, 0.5, 31.3153)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(24, 4, 1)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0.991533, 0.0206646, -0.128197, 1.8129e-09, 0.987256, 0.15914, 0.129851, -0.157793, 0.978897, 15, 0.5, 50.0782)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(16, 4, 1)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Node"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 60, 1.5, 48)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(319, 4, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, 1, 0, 1.5, -73)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(223, 4, 1)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, 1, 0, 1.5, 79)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(223, 4, 1)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, 1, 0, 1.5, 184)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(223, 4, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Node"]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -150, 1.5, 72.5)
 material_override = ExtResource("6_dwbse")
+use_collision = true
 size = Vector3(78, 4, 1)
 
 [node name="city" type="Node" parent="Node"]
@@ -259,38 +278,189 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2872, -2.15967, 148.118)
 
 [node name="city enemies" type="Node" parent="Node/city"]
 
-[node name="enemy" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15443, 0.320328, 108.432)
-
-[node name="enemy2" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1544, 0.320328, 146.432)
-
-[node name="enemy3" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.8484, 0.320328, 150.305)
-
-[node name="enemy4" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.1516, 0.320328, 159.305)
-
-[node name="enemy5" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -55.1516, 0.320328, 159.305)
-
-[node name="enemy6" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(0.147119, 0, 0.989119, 0, 1, 0, -0.989119, 0, 0.147119, -59.4605, 2.32033, 137.305)
-
-[node name="enemy7" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-0.0331029, 0, -0.999452, 0, 1, 0, 0.999452, 0, -0.0331029, -37.4605, 2.32033, 116.305)
-
-[node name="enemy8" parent="Node/city" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(0.272767, 0, -0.96208, 0, 1, 0, 0.96208, 0, 0.272767, -1.46047, 2.32033, 105.249)
-
-[node name="enemy" parent="." instance=ExtResource("8_gbfbk")]
+[node name="enemy" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -45.9198, 0.320326, 0.0307202)
 
-[node name="enemy2" parent="." instance=ExtResource("8_gbfbk")]
+[node name="enemy2" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-0.999943, 0, 0.0106638, 0, 1, 0, -0.0106638, 0, -0.999943, 23.6033, 0.320326, 35.3168)
 
-[node name="enemy3" parent="." instance=ExtResource("8_gbfbk")]
+[node name="enemy3" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-0.151606, 0, -0.988441, 0, 1, 0, 0.988441, 0, -0.151606, 13.5348, 0.320326, 44.3168)
+
+[node name="enemy4" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15443, 0.320328, 108.432)
+
+[node name="enemy5" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1544, 0.320328, 146.432)
+
+[node name="enemy6" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.8484, 0.320328, 150.305)
+
+[node name="enemy7" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.1516, 0.320328, 159.305)
+
+[node name="enemy8" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -55.1516, 0.320328, 159.305)
+
+[node name="enemy9" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(0.147119, 0, 0.989119, 0, 1, 0, -0.989119, 0, 0.147119, -59.4605, 2.32033, 137.305)
+
+[node name="enemy10" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.0331029, 0, -0.999452, 0, 1, 0, 0.999452, 0, -0.0331029, -37.4605, 2.32033, 116.305)
+
+[node name="enemy11" parent="Node/city/city enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(0.272767, 0, -0.96208, 0, 1, 0, 0.96208, 0, 0.272767, -1.46047, 2.32033, 105.249)
+
+[node name="tree 2" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.7186, -0.700271, 94.41)
+
+[node name="tree 3" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -54.7186, -1.17656, 112.41)
+
+[node name="tree 4" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2814, -0.700271, 94.41)
+
+[node name="tree 5" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 53.2814, -1.17656, 112.41)
+
+[node name="tree 6" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 55.7814, -0.700271, 148.204)
+
+[node name="tree 7" parent="Node/city" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.483451, 0, 0.875372, 0, 1, 0, -0.875372, 0, -0.483451, 47.7814, -1.17656, 132.616)
+
+[node name="tree 1" parent="." instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7186, -0.167629, -10.59)
+
+[node name="forest" type="Node" parent="."]
+
+[node name="tree 8" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2266, -0.700271, -55.59)
+
+[node name="tree 9" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 34.2266, -1.17656, -37.59)
+
+[node name="tree 10" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2814, -0.700271, -55.59)
+
+[node name="tree 11" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 50.2814, -1.17656, -36.59)
+
+[node name="tree 12" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 55.7814, -0.700271, -1.79575)
+
+[node name="tree 13" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.804925, 0, 0.593377, 0, 1, 0, -0.593377, 0, -0.804925, 46.4483, -1.17656, -17.3842)
+
+[node name="tree 14" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 13.1437, -0.700271, -27.8006)
+
+[node name="tree 15" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 0.415752, -1.17656, -40.5286)
+
+[node name="tree 16" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -0.33009, -0.700271, -14.3269)
+
+[node name="tree 17" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -12.9352, -1.17656, -26.5337)
+
+[node name="tree 18" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -40.1361, -0.700271, -50.5974)
+
+[node name="tree 19" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.960832, 0, -0.27713, 0, 1, 0, 0.27713, 0, 0.960832, -24.467, -1.17656, -46.1367)
+
+[node name="tree 20" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 56.1437, -0.700271, 17.1994)
+
+[node name="tree 21" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 43.4158, -1.17656, 4.47144)
+
+[node name="tree 22" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 42.6699, -0.700271, 30.6731)
+
+[node name="tree 23" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 29.942, -1.17656, 17.9452)
+
+[node name="tree 26" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 17.0734, -0.700271, -65.1787)
+
+[node name="tree 27" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 1.48491, -1.17656, -56.1787)
+
+[node name="tree 28" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 24.6008, -0.700271, -48.6768)
+
+[node name="tree 30" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 17.6008, -0.700271, -16.6768)
+
+[node name="tree 31" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 32.6008, -0.700271, 2.32324)
+
+[node name="tree 32" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 24.6008, -0.700271, -8.67676)
+
+[node name="tree 33" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 31.6008, -0.700271, -8.67676)
+
+[node name="tree 29" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 11.0123, -1.17656, -39.6768)
+
+[node name="tree 24" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 2.8639, -0.700271, -5.59736)
+
+[node name="tree 25" parent="forest" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.960832, 0, -0.27713, 0, 1, 0, 0.27713, 0, 0.960832, 19.5434, -1.17656, -0.231522)
+
+[node name="building 2" parent="forest" instance=ExtResource("10_ic0uy")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -17.8917, 0.0315794, -30.5322)
+
+[node name="building 5" parent="forest" instance=ExtResource("10_ic0uy")]
+transform = Transform3D(1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 56.1083, 0.0315794, -44.5322)
+
+[node name="building 6" parent="forest" instance=ExtResource("10_ic0uy")]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 56.1083, 0.0315794, -21.5322)
+
+[node name="building 3" parent="forest" instance=ExtResource("10_ic0uy")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -22.8414, 0.0315794, -35.4819)
+
+[node name="building 1" parent="forest" instance=ExtResource("11_k3n1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45451, 0.0315837, -64.9624)
+
+[node name="building 4" parent="forest" instance=ExtResource("11_k3n1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4545, 0.0315837, -64.9624)
+
+[node name="forest enemies" type="Node" parent="forest"]
+
+[node name="enemy" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(0.93082, 0, -0.365478, 0, 1, 0, 0.365478, 0, 0.93082, 54.5564, 1.31535, -25)
+
+[node name="enemy2" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(0.988853, 0, 0.148897, 0, 1, 0, -0.148897, 0, 0.988853, 57.5564, 1.31535, -20)
+
+[node name="enemy3" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.993696, 0, 0.112111, 0, 1, 0, -0.112111, 0, -0.993696, 56.5564, 1.31535, -44)
+
+[node name="enemy4" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.38149, 0, 0.924373, 0, 1, 0, -0.924373, 0, -0.38149, 58.5564, 0.372376, -37)
+
+[node name="enemy5" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06914, 0.32033, -42.8652)
+
+[node name="enemy6" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.930864, 0.32033, -42.8652)
+
+[node name="enemy7" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0719, 1.32033, -36.8652)
+
+[node name="enemy8" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -20.0691, 0.32033, -41.8652)
+
+[node name="enemy9" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -8.25536, 4.56931, -61.9039)
+
+[node name="enemy10" parent="forest/forest enemies" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -6.25536, 1.56931, -64.9039)
 
 [connection signal="body_entered" from="extract" to="extract" method="_on_body_entered"]
 [connection signal="body_exited" from="extract" to="extract" method="_on_body_exited"]

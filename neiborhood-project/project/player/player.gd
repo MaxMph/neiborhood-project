@@ -48,6 +48,7 @@ var aimholder_basepos = Vector3(0.0, 0.124, -0.044)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.player = self
 	gun_set()
 	load_inv_from_global()
 
@@ -108,6 +109,9 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("swap gun"):
 		gun_set()
+
+	#if Input.is_action_just_pressed()
+
 
 	#if Input.is_action_just_pressed("escape") and Global.in_menu == false:
 		#$"hud and UI/Control/pause_menu".open()

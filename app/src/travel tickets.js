@@ -13,9 +13,9 @@ price3button.onclick = _3purchased;
 
 const price1 = 60;
 
-const price2 = 140;
+const price2 = 400;
 
-const price3 = 400;
+const price3 = 210;
 
 document.addEventListener("DOMContentLoaded", function() {
     price1button.textContent = "$" + String(price1);
