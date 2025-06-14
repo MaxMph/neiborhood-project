@@ -74,7 +74,8 @@ func look_for(delta):
 	target_pos = target_pos.move_toward(opp_super_last + Vector3(rand_pos, rand_pos, rand_pos), (3 + look_speed) * delta)
 	$head.look_at(target_pos)
 	opp_super_last = opp_last
-	opp_last = opp.global_position
+	if opp != null:
+		opp_last = opp.global_position
 	
 	shoot()
 	

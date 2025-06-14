@@ -43,7 +43,7 @@ const createWindow = () => {
 
 ipcMain.handle('get_storage', () => {
   //console.log("get");
-  return store.get('money', 0); // default to 0
+  return store.get('money', 400); // default to 0
 });
 
 // Receive new number from renderer and store it

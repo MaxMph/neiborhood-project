@@ -160,7 +160,7 @@ func hit(dmg):
 	health -= dmg
 	$"hud and UI/Control/hud/healthbar".value = health
 	if health <= 0:
-		queue_free()
+		Global.close()
 
 func gun_set():
 	if primary_slot == $"cam-holder/head/lean_goal/cam/gun_holder/aim_holder/sub_aimholder/pistol".res:

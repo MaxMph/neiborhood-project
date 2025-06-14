@@ -283,6 +283,15 @@ transform = Transform3D(-0.0331029, 0, -0.999452, 0, 1, 0, 0.999452, 0, -0.03310
 [node name="enemy8" parent="Node/city" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(0.272767, 0, -0.96208, 0, 1, 0, 0.96208, 0, 0.272767, -1.46047, 2.32033, 105.249)
 
+[node name="enemy" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -45.9198, 0.320326, 0.0307202)
+
+[node name="enemy2" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.999943, 0, 0.0106638, 0, 1, 0, -0.0106638, 0, -0.999943, 23.6033, 0.320326, 35.3168)
+
+[node name="enemy3" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-0.151606, 0, -0.988441, 0, 1, 0, 0.988441, 0, -0.151606, 13.5348, 0.320326, 44.3168)
+
 [connection signal="body_entered" from="extract" to="extract" method="_on_body_entered"]
 [connection signal="body_exited" from="extract" to="extract" method="_on_body_exited"]
 [connection signal="body_entered" from="extract2" to="extract2" method="_on_body_entered"]

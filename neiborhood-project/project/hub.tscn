@@ -102,7 +102,7 @@ size = Vector3(2, 13, 40)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
 lines = Array[String](["I must say Im suprised to see you back here.", "surviving a deployment in a fresh zone isnt easy.", "The shops are closed right now, but they should open up soon."])
 
-[node name="deployment door" type="CSGBox3D" parent="." groups=["interactable"]]
+[node name="deployment door" type="CSGBox3D" parent="." groups=["interactable", "menu"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.41557)
 material_override = SubResource("StandardMaterial3D_6tjby")
 use_collision = true
@@ -257,7 +257,7 @@ items = Array[Resource]([ExtResource("6_rlgil"), ExtResource("7_sji7m"), ExtReso
 [node name="level_loader" type="Node" parent="."]
 script = ExtResource("9_rlgil")
 
-[connection signal="pressed" from="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer/close" to="deployment door" method="_on_close_pressed"]
+[connection signal="pressed" from="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer/close" to="deployment door" method="exit"]
 [connection signal="pressed" from="deployment door/CanvasLayer/Control/PanelContainer/VBoxContainer/HBoxContainer/enter" to="deployment door" method="_on_enter_pressed"]
 [connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Continue" to="item_dropoff" method="_on_continue_pressed"]
 [connection signal="pressed" from="item_dropoff/CanvasLayer/Control/VBoxContainer/Cancel" to="item_dropoff" method="_on_cancel_pressed"]

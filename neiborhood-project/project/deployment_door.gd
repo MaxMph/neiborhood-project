@@ -13,7 +13,7 @@ func interacted():
 	#get_tree().change_scene_to_file("res://project/main.tscn")
 
 
-func _on_close_pressed() -> void:
+func exit() -> void:
 	$CanvasLayer.visible = false
 	Global.in_menu = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -22,7 +22,7 @@ func _on_close_pressed() -> void:
 func _on_enter_pressed() -> void:
 	invalid_warning.visible = false
 	if decode() == true:
-		_on_close_pressed()
+		exit()
 		Global.drop_ids.append(id)
 		get_tree().change_scene_to_file("res://world.tscn")
 	else:
