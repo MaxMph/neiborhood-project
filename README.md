@@ -32,3 +32,4 @@ i to open your inventory
 I dont have a pause menu rn so when you want to close the program enter your inventory to free your mouse :)
 
 HERE IS A VIDEO EXPLINATION OF HOW TO USE: [https://youtu.be/3ZiQeS1HIpo](https://www.youtube.com/watch?v=Bj4we5-BcSw)
+its out of date but the general explination of the systems is still the same.
