@@ -3,7 +3,7 @@ extends Node3D
 @export var anim_player: AnimationPlayer
 @export var res: Resource
 @onready var bullet = preload("res://project/objects/guns/bullet.tscn")
-@onready var main = get_tree().get_root().get_node("Main")
+@onready var main = get_tree().get_first_node_in_group("world")
 
 func shoot():
 	var new_bullet = bullet.instantiate()

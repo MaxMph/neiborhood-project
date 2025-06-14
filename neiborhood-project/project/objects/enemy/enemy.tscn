@@ -10,7 +10,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdor0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jdor0"]
-radius = 9.25043
+radius = 15.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvs5m"]
 albedo_color = Color(1, 0, 0, 1)

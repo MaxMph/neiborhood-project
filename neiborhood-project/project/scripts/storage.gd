@@ -44,11 +44,12 @@ func grab():
 		get_parent().items.remove_at(i)
 		cur_sel = i
 		itemlist.remove_item(i)
-	if cur_sel < itemlist.item_count:
-		itemlist.select(cur_sel)
-		print("works")
-	elif cur_sel == itemlist.item_count:
-		itemlist.select(cur_sel - 1)
+	if cur_sel != null:
+		if cur_sel < itemlist.item_count:
+			itemlist.select(cur_sel)
+			print("works")
+		elif cur_sel == itemlist.item_count:
+			itemlist.select(cur_sel - 1)
 	#if cur_sel < itemlist.item_count:
 		#itemlist.select(cur_sel + 1)
 		#

@@ -17,8 +17,10 @@ func _input(event: InputEvent) -> void:
 		$"../cam-holder/head/lean_goal/cam/interaction ray".interact()
 
 	if Input.is_action_just_pressed("escape"):
-		get_tree().call_group("menu", "exit")
-	
+		if Global.in_menu:
+			get_tree().call_group("menu", "exit")
+		else:
+			$"../hud and UI/Control/pause_menu".open()
 	if Input.is_action_just_pressed("Inventory"):
 		$"../hud and UI/Control/inventory".interacted()
 		$"../inventory".send_items()

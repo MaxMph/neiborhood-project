@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drp58m2axqnp5"]
+[gd_scene load_steps=16 format=3 uid="uid://drp58m2axqnp5"]
 
 [ext_resource type="Script" uid="uid://bp4wcekqixb61" path="res://project/player/player.gd" id="1_h5qux"]
 [ext_resource type="PackedScene" uid="uid://dfia2530i1e3a" path="res://project/objects/guns/pistol.tscn" id="2_at3b1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://baj57egluslyx" path="res://project/HUD and UI/inventory_ui.gd" id="3_b5m3j"]
 [ext_resource type="PackedScene" uid="uid://t5rn6217mqlp" path="res://project/objects/guns/ak_47.tscn" id="3_yh1fw"]
 [ext_resource type="Script" uid="uid://d34d1nsrnf31b" path="res://project/player/input_manager.gd" id="4_3rm1y"]
+[ext_resource type="Script" uid="uid://4nh5j8aw3qed" path="res://project/player/pause_menu.gd" id="8_si3v1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yh1fw"]
 
@@ -588,6 +589,46 @@ label_settings = SubResource("LabelSettings_yh1fw")
 wait_time = 4.0
 one_shot = true
 
+[node name="pause_menu" type="Control" parent="hud and UI/Control" groups=["menu"]]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_si3v1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="hud and UI/Control/pause_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="hud and UI/Control/pause_menu/VBoxContainer"]
+layout_mode = 2
+text = "Menu 
+(in case you havent figured that out yet)"
+horizontal_alignment = 1
+
+[node name="resume" type="Button" parent="hud and UI/Control/pause_menu/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="quit" type="Button" parent="hud and UI/Control/pause_menu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
 [node name="reload timer" type="Timer" parent="."]
 one_shot = true
 
@@ -595,3 +636,5 @@ one_shot = true
 
 [connection signal="tab_changed" from="hud and UI/Control/inventory" to="hud and UI/Control/inventory" method="_on_tab_changed"]
 [connection signal="timeout" from="hud and UI/Control/hud/extract_timer/extract_timer" to="." method="_on_extract_timer_timeout"]
+[connection signal="pressed" from="hud and UI/Control/pause_menu/VBoxContainer/resume" to="hud and UI/Control/pause_menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="hud and UI/Control/pause_menu/VBoxContainer/quit" to="hud and UI/Control/pause_menu" method="_on_quit_pressed"]

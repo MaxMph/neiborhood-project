@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cp8qcvmysidx2"]
+[gd_scene load_steps=21 format=3 uid="uid://cp8qcvmysidx2"]
 
 [ext_resource type="PackedScene" uid="uid://drp58m2axqnp5" path="res://project/player/player.tscn" id="1_j8t7o"]
 [ext_resource type="PackedScene" uid="uid://dobumgbf50lin" path="res://project/dialouge/test_npc.tscn" id="2_iwa8x"]
+[ext_resource type="Material" uid="uid://devbrrc5k4ghd" path="res://project/textures/concreate.tres" id="2_sji7m"]
 [ext_resource type="Script" uid="uid://yusbf7j52cn2" path="res://project/deployment_door.gd" id="3_6tjby"]
 [ext_resource type="Script" uid="uid://c8qo8lf4dmo4o" path="res://project/item_dropoff.gd" id="4_xj35j"]
 [ext_resource type="PackedScene" uid="uid://8j7nkl1rvtar" path="res://project/item_sack.tscn" id="5_rtvws"]
@@ -40,7 +41,10 @@ size = Vector3(3, 1.58105, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xj35j"]
 
-[node name="Main" type="Node3D"]
+[sub_resource type="LabelSettings" id="LabelSettings_sji7m"]
+font_size = 12
+
+[node name="Main" type="Node3D" groups=["world"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6tjby")
@@ -49,11 +53,13 @@ environment = SubResource("Environment_6tjby")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -16)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(40, 1, 40)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.70793, -0.508536)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(40, 1, 40)
 
@@ -70,21 +76,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iwa8x")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, -16)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(2, 13, 40)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, -16)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(2, 13, 40)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, -16.2226)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(2, 13, 40)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, 3)
+material_override = ExtResource("2_sji7m")
 use_collision = true
 size = Vector3(2, 13, 40)
 
@@ -194,13 +204,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="item_dropoff/CanvasLayer/Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="item_dropoff/CanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="item_dropoff/CanvasLayer/Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 2
 text = "sergsegsergserg"
 horizontal_alignment = 1
 vertical_alignment = 1
 selection_enabled = true
+
+[node name="Label" type="Label" parent="item_dropoff/CanvasLayer/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Insert this code into the Slate app to receive payment."
+label_settings = SubResource("LabelSettings_sji7m")
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="item_dropoff/CanvasLayer/Control"]
 visible = false

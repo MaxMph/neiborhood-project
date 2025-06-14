@@ -16,7 +16,7 @@ var rand_pos
 
 @onready var dropbox = preload("res://project/item_sack.tscn")
 @export var droploot: Array[Resource] = []
-@onready var main = get_tree().get_root().get_node("Main")
+@onready var main = get_tree().get_first_node_in_group("world")
 
 var tracking = false
 
@@ -77,7 +77,7 @@ func look_for(delta):
 	opp_last = opp.global_position
 	
 	shoot()
-
+	
 func shoot():
 	if shots_fired < gun.mag_cap:
 		if firerate_timer.is_stopped() == true:

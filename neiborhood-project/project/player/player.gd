@@ -109,6 +109,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("swap gun"):
 		gun_set()
 
+	#if Input.is_action_just_pressed("escape") and Global.in_menu == false:
+		#$"hud and UI/Control/pause_menu".open()
+
 	if Input.is_action_pressed("lean left"):
 		lean(1, delta)
 		leaning_l = true

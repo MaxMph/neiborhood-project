@@ -3,12 +3,13 @@ extends CSGBox3D
 @onready var text_edit = $CanvasLayer/Control/PanelContainer/VBoxContainer/TextEdit
 @onready var invalid_warning = $CanvasLayer/Control/PanelContainer/VBoxContainer/Label
 var valid = true
+var id
 
 func interacted():
 	$CanvasLayer.visible = true
 	Global.in_menu = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	invalid_warning.visible = true
+	invalid_warning.visible = false
 	#get_tree().change_scene_to_file("res://project/main.tscn")
 
 
@@ -18,28 +19,36 @@ func _on_close_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	text_edit.text = ""
 
-
 func _on_enter_pressed() -> void:
 	invalid_warning.visible = false
-	var inputcode: String = text_edit.text
-	var decode = inputcode.split(" ")
-	var id
-	decode = decode.slice(3)
-	Global.drop_location = int(decode[0])
-	id = int(decode[1])
-	print(decode)
-	if decode.size() != Global.drop_location + 2:
-		valid = false
-		print(decode.size())
-		print(Global.drop_location + 1)
-	
-	for i in Global.drop_ids:
-		if i == id:
-			valid = false
-	
-	if valid == true:
+	if decode() == true:
+		_on_close_pressed()
 		Global.drop_ids.append(id)
-		get_tree().change_scene_to_file("res://project/main.tscn")
+		get_tree().change_scene_to_file("res://world.tscn")
 	else:
 		text_edit.text = ""
-		$CanvasLayer/Control/PanelContainer/VBoxContainer/Label.visible = true
+		invalid_warning.visible = true
+
+func decode():
+	var inputcode: String = text_edit.text
+	var decode = inputcode.split(" ")
+	for i in decode:
+		#if int(i) == null:
+		if i.is_valid_int() == false:
+			#print("abasdktaet")
+			return false
+	decode = decode.slice(3)
+	if int(decode[0]) > 0 and int(decode[0]) < 4:
+		Global.drop_location = int(decode[0])
+	id = int(decode[1])
+	if decode.size() != Global.drop_location + 2:
+		#valid = false
+		return false
+	for i in Global.drop_ids:
+		if i == id:
+			return false
+	
+	return true
+
+func finalize():
+	pass

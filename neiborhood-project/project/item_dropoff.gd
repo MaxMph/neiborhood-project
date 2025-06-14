@@ -47,7 +47,7 @@ func encode():
 	Global.shipments_made += 1
 	for i in encoded_values:
 		final += str(i) + " "
-	$CanvasLayer/Control/PanelContainer/RichTextLabel.text = final #str(encoded_values)
+	$CanvasLayer/Control/PanelContainer/VBoxContainer/RichTextLabel.text = final #str(encoded_values)
 	open()
 
 func decode():
