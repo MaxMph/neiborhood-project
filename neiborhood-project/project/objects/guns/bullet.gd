@@ -13,7 +13,7 @@ var spawn_transform
 #var spawn_rot
 var last_pos
 
-
+var sender = null
 
 func _ready() -> void:
 	add_sibling(ray)
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	
 	if ray.is_colliding():
 		if ray.get_collider().is_in_group("hittable"):
-			ray.get_collider().hit(dmg)
+			ray.get_collider().hit(dmg, sender)
 		#print("WHOOOOOOOOOOOO")
 		ray.queue_free()
 		#ray.get_collision_normal()

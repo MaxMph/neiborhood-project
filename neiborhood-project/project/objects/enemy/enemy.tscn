@@ -9,8 +9,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdor0"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_jdor0"]
-radius = 15.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7rfr"]
+radius = 10.0
+height = 26.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvs5m"]
 albedo_color = Color(1, 0, 0, 1)
@@ -35,8 +36,8 @@ shape = SubResource("CapsuleShape3D_jdor0")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.2091)
-shape = SubResource("SphereShape3D_jdor0")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -4.86426)
+shape = SubResource("CapsuleShape3D_g7rfr")
 
 [node name="goal_rot" type="Node3D" parent="."]
 

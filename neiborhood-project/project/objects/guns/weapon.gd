@@ -4,10 +4,12 @@ extends Node3D
 @export var res: Resource
 @onready var bullet = preload("res://project/objects/guns/bullet.tscn")
 @onready var main = get_tree().get_first_node_in_group("world")
+var sender
 
 func shoot():
 	var new_bullet = bullet.instantiate()
 	#new_bullet.transform = $bullet_marker.transform
+	new_bullet.sender = sender
 	new_bullet.spawn_transform = $bullet_marker.global_transform
 	#new_bullet.spawn_pos = $bullet_marker.global_position
 	#new_bullet.spawn_rot = $bullet_marker.global_rotation

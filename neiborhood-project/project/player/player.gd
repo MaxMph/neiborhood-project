@@ -151,11 +151,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot():
 	if shots_fired < primary_slot.mag_cap:
 		if firerate_timer.is_stopped() == true:
+			get_node(str(primary_slot.model)).sender = self
 			get_node(str(primary_slot.model)).shoot()
 			firerate_timer.start()
 			shots_fired += 1
 
-func hit(dmg):
+func hit(dmg, sender):
 	print("works")
 	health -= dmg
 	$"hud and UI/Control/hud/healthbar".value = health

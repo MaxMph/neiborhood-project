@@ -5,6 +5,9 @@ var health = 60
 @onready var _gun = $head/pistol
 var shots_fired = 0
 
+@export var loot_chance = 60
+var lootcycles = 0
+
 var target_pos
 var look_speed = 0
 var opp
@@ -23,8 +26,28 @@ var tracking = false
 
 func _ready() -> void:
 	target_pos = global_position
-	droploot.append(load("res://project/scripts/items/other/Gold Watch.tres"))
+	loot_rand()
 
+
+func loot_rand():
+	lootcycles += 1
+	if randi_range(0, 100) < loot_chance:
+		droploot.append(load("res://project/scripts/items/other/Gold Watch.tres"))
+	
+	if randi_range(0, 100) < loot_chance:
+		droploot.append(load("res://project/scripts/items/other/Coins.tres"))
+	
+	if randi_range(0, 100) < loot_chance:
+		droploot.append(load("res://project/scripts/items/other/toy car.tres"))
+	
+	if randi_range(0, 100) < loot_chance:
+		droploot.append(load("res://project/scripts/items/consumables/beans.tres"))
+	
+	if randi_range(0, 100) < loot_chance:
+		droploot.append(load("res://project/scripts/items/guns/pistol.tres"))
+	
+	if randi_range(0, 100) < loot_chance / lootcycles:
+		loot_rand()
 
 func _physics_process(delta: float) -> void:
 	
@@ -33,18 +56,21 @@ func _physics_process(delta: float) -> void:
 	
 	if tracking:
 		look_for(delta)
-		if opp != null:
-			$proberay.look_at(opp.global_position)
-			if $proberay.is_colliding() and $proberay.get_collider().is_in_group("player"):
-				pass
-			elif $proberay/Timer.is_stopped():
-				$proberay/Timer.start()
+	
+	if opp != null:
+		$proberay.look_at(opp.global_position)
+		if $proberay.is_colliding() and $proberay.get_collider().is_in_group("player"):
+			tracking = true
+		elif $proberay/Timer.is_stopped():
+			$proberay/Timer.start()
 		
 	
 	$MeshInstance3D2.global_position = target_pos
 	move_and_slide()
 
-func hit(dmg):
+func hit(dmg, sender):
+	if sender != null:
+		_on_area_3d_body_entered(sender)
 	health -= dmg
 	if health <= 0:
 		die()
