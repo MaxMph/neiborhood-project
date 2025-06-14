@@ -73,6 +73,18 @@ ipcMain.handle('get_used_ids', () => {
   return store.get('ids', 0); // default to 0
 });
 
+ipcMain.handle('set_sell_ids', (event, value) => {
+  //console.log("set id");
+  store.set('sell_ids', value);
+})
+
+ipcMain.handle('get_sell_ids', () => {
+  //console.log("get ids");
+  return store.get('sell_ids', []); // default to 0
+});
+
+
+
 //function background_music() {
   //music = new Audio("./First Project!!!!!!! cut 1.mp3");
   //music = new Audio(music);

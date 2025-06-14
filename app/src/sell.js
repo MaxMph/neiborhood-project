@@ -1,4 +1,7 @@
 //const { app } = require("electron");
+
+//const { app } = require("electron");
+
 // import music from "./First Project!!!!!!! cut 1.mp3"
 const shipment = document.getElementById('shipment_input');
 const outputtext = document.getElementById('end_val');
@@ -13,6 +16,7 @@ document.getElementById('reset').onclick = clear_ballance;
 let start_array = [];
 let shipment_price = 0;
 let used_ids = [];
+let id = 0
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -55,9 +59,12 @@ function check_validity() {
 
 	}
 
+	id = start_array[start_array.length - 1]
+
 	for (let i = 0; i < used_ids.length; i++)
-		if (start_array[start_array.length - 1] = used_ids) {
+		if (id == used_ids[i]) {
 			valid_code = false
+			console.log("this holdup is because of id stuff")
 		}
 
 	//check if code length is validated
@@ -128,6 +135,11 @@ async function sold() {
 
 	await window.api.set_money(final_value + stored_money);
 
+	//let stored_ids = await window.api.get_sell_ids();
+	used_ids.push(id)
+	
+	await window,api.set_sell_ids(used_ids);
+
 	set_ballance()
 	
 	outputtext.textContent = "";
@@ -135,6 +147,6 @@ async function sold() {
 }
 
 async function set_ballance() {
-
+	used_ids = await window.api.get_sell_ids()
 	ballance.textContent = "$" + await window.api.get_money();
 }
