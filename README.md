@@ -9,9 +9,9 @@ an electron app that you interact with as if you were really within this fantast
 
 and a godot app that allows you to deploy and extract on the planets surface.
 
-right know its unbelivibly jank, but the general idea of getting loot, depositing it at the dropbox after extracting, and bringing that package code to the off-planet (electon) app to sell to the megacorp that allows you to scavange tha planet.
+there isnt a lot of content yet, but the general idea of getting loot, depositing it at the dropbox after extracting, and bringing that package code to the off-planet (electon) app to sell to the megacorp that allows you to scavange tha planet, then buying more extraction passes is there.
 
-this project is a mess, but I have put a lot of work into little features that you might miss if you dont look around a bit. (there is a door behind where you spawn in, dont miss that.)
+this project is a little, but I have put a lot of work into little features that you might miss if you dont look around a bit. (there is a door behind where you spawn in, dont miss that.)
 
 in the on-planet side (godot) there are some controls you should know:
 
